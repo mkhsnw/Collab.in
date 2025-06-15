@@ -48,11 +48,11 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({ articles }) => {
               </div>
               <div className="p-6">
                 <div className="mb-3">
-                  <span className="text-xs text-blue-600 font-medium bg-blue-50 px-2 py-1 rounded-full">
+                  <span className="text-xs text-[#584DFF] font-medium bg-blue-50 px-2 py-1 rounded-full">
                     {article.category}
                   </span>
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-[#584DFF] transition-colors">
                   {article.title}
                 </h3>
                 <p className="text-gray-500 text-sm">{article.date}</p>
