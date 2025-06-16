@@ -1,107 +1,67 @@
-import React, { useState, useEffect } from "react";
-// Import Components
-import Header from '../components/common/Header';
-import Footer from '../components/common/Footer';
-import HeroSection from '../components/dashboard/HeroSection';
-import CategoriesSection from '../components/dashboard/CategoriesSection';
-import FeaturedCoursesSection from '../components/dashboard/FeaturedCoursesSection';
-import GrowSkillSection from '../components/dashboard/GrowSkillSection';
-import StatsSection from '../components/dashboard/StatsSection';
-import TestimonialsSection from '../components/dashboard/TestimonialsSection';
-import ArticlesSection from '../components/dashboard/ArticleSection';
-
-// Import Data
-import { 
-  currentUser, 
-  categories, 
-  featuredCourses, 
-  stats, 
-  testimonials, 
-  articles 
-} from '../data/dashboardData';
+import React, { useState } from "react";
+import { Header } from "../components/dashboard/layout/Header";
+import { Sidebar } from "../components/dashboard/layout/Sidebar";
+import { DashboardView } from "../components/dashboard/DashboardView";
+import { ProfileView } from "../components/dashboard/ProfileView";
+import { RoadmapsView } from "../components/dashboard/RoadmapsView";
 
 const DashboardPage: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("All Categories");
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [currentView, setCurrentView] = useState<string>("dashboard");
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] =
+    useState<boolean>(false);
 
-  // Simulate loading with potential error handling
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-      
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        setIsLoading(false);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unexpected error occurred');
-        setIsLoading(false);
-      }
-    };
-
-    loadData();
-  }, []);
-
-  // Handle category selection
-  const handleCategorySelect = (categoryName: string): void => {
-    setActiveCategory(categoryName);
+  const openMobileSidebar = () => {
+    setIsMobileSidebarOpen(true);
   };
 
-  // Handle retry
-  const handleRetry = (): void => {
-    setError(null);
-    setIsLoading(true);
-    // Trigger useEffect again by changing a dependency or call loadData directly
-    window.location.reload();
+  const closeMobileSidebar = () => {
+    setIsMobileSidebarOpen(false);
   };
 
-  // Loading state
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading dashboard...</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Error state
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Something went wrong</h2>
-          <p className="text-gray-600 mb-4">{error}</p>
-          <button 
-            onClick={handleRetry}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    );
-  }
+  const renderCurrentView = () => {
+    switch (currentView) {
+      case "dashboard":
+        return <DashboardView />;
+      case "profile":
+        return <ProfileView />;
+      case "roadmaps":
+        return <RoadmapsView />;
+      default:
+        return <DashboardView />;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header currentUser={currentUser} />
-      <HeroSection />
-      <CategoriesSection 
-        categories={categories}
-        activeCategory={activeCategory}
-        onCategorySelect={handleCategorySelect}
-      />
-      <FeaturedCoursesSection courses={featuredCourses} />
-      <GrowSkillSection />
-      <StatsSection stats={stats} />
-      <TestimonialsSection testimonials={testimonials} />
-      <ArticlesSection articles={articles} />
-      <Footer />
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Mobile Sidebar Overlay */}
+      {isMobileSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={closeMobileSidebar}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform ${
+          isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-0`}
+      >
+        <Sidebar
+          currentView={currentView}
+          setCurrentView={setCurrentView}
+          closeMobileSidebar={closeMobileSidebar}
+        />
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Header */}
+        <Header openMobileSidebar={openMobileSidebar} />
+
+        {/* Main Content Area */}
+        <main className="flex-1 p-6">{renderCurrentView()}</main>
+      </div>
     </div>
   );
 };

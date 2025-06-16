@@ -121,6 +121,32 @@ export const featuredCourses: Course[] = [
     level: "Intermediate",
     duration: "30 hours",
   },
+  {
+    id: 7,
+    title: "Complete Python Bootcamp: Go from zero to hero in Python",
+    instructor: "Jose Portilla",
+    rating: 4.6,
+    students: 1234567,
+    price: "$84.99",
+    originalPrice: "$199.99",
+    image: "/assets/image.png",
+    category: "Development",
+    level: "Beginner",
+    duration: "22 hours",
+  },
+  {
+    id: 8,
+    title: "Complete Python Bootcamp: Go from zero to hero in Python",
+    instructor: "Jose Portilla",
+    rating: 4.6,
+    students: 1234567,
+    price: "$84.99",
+    originalPrice: "$199.99",
+    image: "/assets/image.png",
+    category: "Development",
+    level: "Beginner",
+    duration: "22 hours",
+  },
 ];
 
 export const stats: Stat[] = [
@@ -175,5 +201,178 @@ export const articles: Article[] = [
     date: "March 10, 2024",
     image: "https://picsum.photos/300/200?random=10",
     category: "Programming",
+  },
+];
+
+export const userData = {
+  name: "Andi Pratama",
+  photo:
+    "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=120&q=80",
+  bio: "Full Stack Developer | Open Source Enthusiast | Computer Science Student",
+  status: "Mahasiswa",
+  skills: [
+    {
+      name: "JavaScript",
+      level: 80,
+      verified: true,
+    },
+    {
+      name: "React",
+      level: 75,
+      verified: true,
+    },
+    {
+      name: "Node.js",
+      level: 65,
+      verified: true,
+    },
+    {
+      name: "TypeScript",
+      level: 60,
+      verified: true,
+    },
+    {
+      name: "Python",
+      level: 50,
+      verified: false,
+    },
+  ],
+  contributions: [
+    {
+      project: "react-router",
+      title: "Fix navigation bug in useHistory hook",
+      prLink: "https://github.com/remix-run/react-router/pull/1234",
+      date: "2023-03-15",
+      status: "Merged",
+    },
+    {
+      project: "tailwindcss",
+      title: "Add new utility class for text truncation",
+      prLink: "https://github.com/tailwindlabs/tailwindcss/pull/5678",
+      date: "2023-02-10",
+      status: "Merged",
+    },
+    {
+      project: "vite",
+      title: "Improve error handling in dev server",
+      prLink: "https://github.com/vitejs/vite/pull/9012",
+      date: "2023-04-05",
+      status: "In Review",
+    },
+  ],
+  certificates: [
+    {
+      name: "Frontend Developer Path",
+      issuer: "CodeCourse",
+      date: "2023-01-15",
+      image:
+        "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=120&q=80",
+    },
+    {
+      name: "React Advanced",
+      issuer: "CodeCourse",
+      date: "2022-11-20",
+      image:
+        "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=120&q=80",
+    },
+  ],
+};
+export const roadmapsData = [
+  {
+    id: 1,
+    title: "Frontend Developer",
+    progress: 75,
+    totalModules: 12,
+    completedModules: 9,
+    status: "in-progress",
+    image:
+      "https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80",
+    nextLesson: {
+      title: "Advanced React Hooks",
+      duration: "45 menit",
+    },
+  },
+  {
+    id: 2,
+    title: "Backend Developer",
+    progress: 40,
+    totalModules: 10,
+    completedModules: 4,
+    status: "in-progress",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80",
+    nextLesson: {
+      title: "Database Optimization",
+      duration: "60 menit",
+    },
+  },
+  {
+    id: 3,
+    title: "UI/UX Design",
+    progress: 100,
+    totalModules: 8,
+    completedModules: 8,
+    status: "completed",
+    image:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80",
+    completionDate: "10 Feb 2023",
+  },
+];
+export const projectRecommendations = [
+  {
+    id: 1,
+    title: "E-commerce Platform",
+    description: "Develop a modern e-commerce platform with React and Node.js",
+    difficulty: "Menengah",
+    matchPercentage: 95,
+    skills: ["React", "Node.js", "JavaScript"],
+    image:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    id: 2,
+    title: "Task Management App",
+    description: "Create a drag-and-drop task management application",
+    difficulty: "Pemula",
+    matchPercentage: 90,
+    skills: ["JavaScript", "React"],
+    image:
+      "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    id: 3,
+    title: "API Authentication Service",
+    description: "Implement secure API authentication with JWT",
+    difficulty: "Menengah",
+    matchPercentage: 85,
+    skills: ["Node.js", "JavaScript"],
+    image:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80",
+  },
+];
+export const applicationStatus = [
+  {
+    id: 1,
+    project: "Open Source CMS",
+    status: "Diterima",
+    date: "1 hari yang lalu",
+    message: "Selamat! Anda telah diterima sebagai kontributor.",
+    unread: true,
+  },
+  {
+    id: 2,
+    project: "Mobile App Framework",
+    status: "Dalam Review",
+    date: "3 hari yang lalu",
+    message: "Tim sedang mengevaluasi aplikasi Anda.",
+    unread: false,
+  },
+  {
+    id: 3,
+    project: "Database Client",
+    status: "Butuh Revisi",
+    date: "1 minggu yang lalu",
+    message: "Mohon perbaiki beberapa bagian pada kode Anda.",
+    unread: false,
   },
 ];

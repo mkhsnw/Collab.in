@@ -7,7 +7,10 @@ import {
 import SignUpPage from "./pages/SignUpPage";
 import PersonalizePage from "./pages/PersonalizePage";
 import LoginPage from "./pages/LoginPage";
+import CoursesPage from "./pages/CoursePage";
+import CourseDetailPage from "./pages/CourseDetailPage";
 import DashboardPage from "./pages/DashboardPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/personalize" element={<PersonalizePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<DashboardPage />}></Route>
+        <Route path="/home" element={<HomePage />}></Route>
+        <Route path="/courses" element={<CoursesPage />}></Route>
+        <Route path="/course/:id" element={<CourseDetailPage />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>

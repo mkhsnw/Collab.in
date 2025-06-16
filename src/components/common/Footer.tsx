@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <img
-                src="/collabin_logo-removebg-preview.png"
+                src="/collabin.png"
                 width={150}
                 height={150}
                 alt="Collabin-logo"

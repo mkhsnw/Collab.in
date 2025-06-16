@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img
-              src="/collabin_logo-removebg-preview.png"
+              src="/collabin.png"
               alt="LearnPress Logo"
               className="h-40 w-auto"
             />
@@ -34,13 +34,13 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a
-              href="#"
+              href="/home"
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
             >
               Home
             </a>
             <a
-              href="#"
+              href="/courses"
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
             >
               Courses
@@ -64,17 +64,20 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
             {/* Profile Section */}
             <div className="hidden md:flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-200">
-                <img
-                  src={currentUser.avatar}
-                  alt={currentUser.name}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // Fallback to default avatar if image fails
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236B7280'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
-                  }}
-                />
+                <a href="/dashboard">
+                  {" "}
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to default avatar if image fails
+                      const target = e.target as HTMLImageElement;
+                      target.src =
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236B7280'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+                    }}
+                  />
+                </a>
               </div>
               <div className="hidden lg:block">
                 <p className="text-sm font-medium text-gray-800">
