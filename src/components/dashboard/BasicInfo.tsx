@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserIcon, PencilIcon } from 'lucide-react';
+import { PencilIcon } from 'lucide-react';
 interface UserType {
   name: string;
   photo: string;
