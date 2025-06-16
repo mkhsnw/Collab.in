@@ -87,7 +87,7 @@ const LoginPage = () => {
         );
 
         // Navigate to dashboard
-        navigate("/dashboard");
+        navigate("/home");
       } else {
         // Show error if no user found
         setErrors({ email: "Account not found. Please sign up first." });
