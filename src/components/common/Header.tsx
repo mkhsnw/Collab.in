@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Search, Menu, X } from "lucide-react";
 import type { User } from "../../types";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   currentUser: User;
@@ -18,6 +19,8 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const navigate = useNavigate();
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,18 +36,18 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="/home"
+            <button
+              onClick={() => navigate("/home")}
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
             >
               Home
-            </a>
-            <a
-              href="/courses"
+            </button>
+            <button
+              onClick={() => navigate("/courses")}
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
             >
               Courses
-            </a>
+            </button>
             <a
               href="#"
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
