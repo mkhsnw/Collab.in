@@ -50,7 +50,10 @@ const GrowSkillSection: React.FC = () => {
             </div>
 
             {/* CTA Button */}
-            <button className="bg-[#584DFF] hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg">
+            <button
+              className="bg-[#584DFF] hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg"
+              onClick={() => (window.location.href = "/courses")}
+            >
               Explorer Course
             </button>
           </div>

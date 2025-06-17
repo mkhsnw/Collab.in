@@ -11,6 +11,8 @@ import CoursesPage from "./pages/CoursePage";
 import CourseDetailPage from "./pages/CourseDetailPage";
 import DashboardPage from "./pages/DashboardPage";
 import HomePage from "./pages/HomePage";
+import VideoCoursePage from "./pages/VideoCoursePage";
+import PortfolioPage from "./pages/PortfolioPage";
 
 function App() {
   return (
@@ -23,7 +25,10 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
         <Route path="/courses" element={<CoursesPage />}></Route>
+        <Route path="/video/:id" element={<VideoCoursePage />}></Route>
         <Route path="/course/:id" element={<CourseDetailPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/portfolio/:courseId" element={<PortfolioPage />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>

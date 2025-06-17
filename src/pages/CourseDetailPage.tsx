@@ -1,31 +1,31 @@
-import React, { useState, useMemo } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { 
-  Star, 
-  Clock, 
-  Globe, 
-  Award, 
-  PlayCircle,  
-  Share2, 
-  Heart, 
+import React, { useState, useMemo } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  Star,
+  Clock,
+  Globe,
+  Award,
+  PlayCircle,
+  Share2,
+  Heart,
   ChevronLeft,
   Check,
   User,
-} from 'lucide-react';
-import Header from '../components/common/Header';
-import Footer from '../components/common/Footer';
-import { currentUser, featuredCourses } from '../data/dashboardData';
+} from "lucide-react";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+import { currentUser, featuredCourses } from "../data/dashboardData";
 // import type { Course } from '../types';
 
 const CourseDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<string>('overview');
+  const [activeTab, setActiveTab] = useState<string>("overview");
   const [isEnrolled, setIsEnrolled] = useState<boolean>(false);
 
   // Find the course by ID
   const course = useMemo(() => {
-    return featuredCourses.find(c => c.id === parseInt(id || '0'));
+    return featuredCourses.find((c) => c.id === parseInt(id || "0"));
   }, [id]);
 
   if (!course) {
@@ -34,10 +34,14 @@ const CourseDetailPage: React.FC = () => {
         <Header currentUser={currentUser} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">Course Not Found</h1>
-            <p className="text-gray-600 mb-8">The course you're looking for doesn't exist.</p>
-            <button 
-              onClick={() => navigate('/courses')}
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              Course Not Found
+            </h1>
+            <p className="text-gray-600 mb-8">
+              The course you're looking for doesn't exist.
+            </p>
+            <button
+              onClick={() => navigate("/courses")}
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Back to Courses
@@ -50,9 +54,21 @@ const CourseDetailPage: React.FC = () => {
   }
 
   const courseModules = [
-    { title: "Introduction to the Course", duration: "15 min", completed: true },
-    { title: "Setting Up Your Development Environment", duration: "30 min", completed: true },
-    { title: "Basic Concepts and Fundamentals", duration: "45 min", completed: false },
+    {
+      title: "Introduction to the Course",
+      duration: "15 min",
+      completed: true,
+    },
+    {
+      title: "Setting Up Your Development Environment",
+      duration: "30 min",
+      completed: true,
+    },
+    {
+      title: "Basic Concepts and Fundamentals",
+      duration: "45 min",
+      completed: false,
+    },
     { title: "Hands-on Project #1", duration: "60 min", completed: false },
     { title: "Advanced Techniques", duration: "50 min", completed: false },
     { title: "Real-world Applications", duration: "40 min", completed: false },
@@ -66,7 +82,7 @@ const CourseDetailPage: React.FC = () => {
     students: "50K+",
     courses: "15",
     rating: 4.8,
-    avatar: "/assets/profile.png"
+    avatar: "/assets/profile.png",
   };
 
   const reviews = [
@@ -74,20 +90,20 @@ const CourseDetailPage: React.FC = () => {
       name: "Alex Johnson",
       rating: 5,
       comment: "Excellent course! Very well structured and easy to follow.",
-      date: "2 weeks ago"
+      date: "2 weeks ago",
     },
     {
       name: "Maria Garcia",
       rating: 5,
       comment: "This course helped me land my dream job. Highly recommended!",
-      date: "1 month ago"
+      date: "1 month ago",
     },
     {
       name: "David Lee",
       rating: 4,
       comment: "Good content, but could use more practical examples.",
-      date: "1 month ago"
-    }
+      date: "1 month ago",
+    },
   ];
 
   const handleEnroll = () => {
@@ -98,13 +114,13 @@ const CourseDetailPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header currentUser={currentUser} />
-      
+
       {/* Breadcrumb */}
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center space-x-2 text-sm">
-            <button 
-              onClick={() => navigate('/courses')}
+            <button
+              onClick={() => navigate("/courses")}
               className="text-gray-500 hover:text-gray-700 flex items-center"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
@@ -130,15 +146,18 @@ const CourseDetailPage: React.FC = () => {
                 {course.title}
               </h1>
               <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-                Master the fundamentals and advanced concepts in this comprehensive course 
-                designed for both beginners and experienced learners.
+                Master the fundamentals and advanced concepts in this
+                comprehensive course designed for both beginners and experienced
+                learners.
               </p>
-              
+
               <div className="flex flex-wrap items-center gap-6 mb-8">
                 <div className="flex items-center">
                   <Star className="w-5 h-5 text-yellow-400 mr-2" />
                   <span className="text-lg font-semibold">{course.rating}</span>
-                  <span className="text-blue-100 ml-2">({course.students.toLocaleString()} students)</span>
+                  <span className="text-blue-100 ml-2">
+                    ({course.students.toLocaleString()} students)
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <Clock className="w-5 h-5 text-blue-200 mr-2" />
@@ -155,7 +174,7 @@ const CourseDetailPage: React.FC = () => {
               </div>
 
               <div className="flex items-center">
-                <img 
+                <img
                   src={instructor.avatar}
                   alt={instructor.name}
                   className="w-12 h-12 rounded-full mr-4"
@@ -171,7 +190,7 @@ const CourseDetailPage: React.FC = () => {
             <div className="lg:col-span-1">
               <div className="bg-white rounded-xl p-6 shadow-xl text-gray-800 sticky top-8">
                 <div className="aspect-video bg-gray-200 rounded-lg mb-6 relative overflow-hidden">
-                  <img 
+                  <img
                     src={course.image}
                     alt={course.title}
                     className="w-full h-full object-cover"
@@ -183,21 +202,28 @@ const CourseDetailPage: React.FC = () => {
 
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center space-x-2 mb-2">
-                    <span className="text-3xl font-bold text-gray-800">{course.price}</span>
-                    <span className="text-lg text-gray-500 line-through">{course.originalPrice}</span>
+                    <span className="text-3xl font-bold text-gray-800">
+                      {course.price}
+                    </span>
+                    <span className="text-lg text-gray-500 line-through">
+                      {course.originalPrice}
+                    </span>
                   </div>
                   <p className="text-sm text-green-600 font-medium">Save 57%</p>
                 </div>
 
                 {!isEnrolled ? (
-                  <button 
+                  <button
                     onClick={handleEnroll}
                     className="w-full bg-[#584DFF] text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 transition-all duration-200 mb-4"
                   >
                     Enroll Now
                   </button>
                 ) : (
-                  <button className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg mb-4">
+                  <button
+                    className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg mb-4"
+                    onClick={() => navigate(`/video/${course.id}`)}
+                  >
                     Continue Learning
                   </button>
                 )}
@@ -246,18 +272,18 @@ const CourseDetailPage: React.FC = () => {
               <div className="border-b">
                 <nav className="flex space-x-8 px-6">
                   {[
-                    { id: 'overview', label: 'Overview' },
-                    { id: 'curriculum', label: 'Curriculum' },
-                    { id: 'instructor', label: 'Instructor' },
-                    { id: 'reviews', label: 'Reviews' }
+                    { id: "overview", label: "Overview" },
+                    { id: "curriculum", label: "Curriculum" },
+                    { id: "instructor", label: "Instructor" },
+                    { id: "reviews", label: "Reviews" },
                   ].map((tab) => (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
                       className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
                         activeTab === tab.id
-                          ? 'border-blue-600 text-blue-600'
-                          : 'border-transparent text-gray-500 hover:text-gray-700'
+                          ? "border-blue-600 text-blue-600"
+                          : "border-transparent text-gray-500 hover:text-gray-700"
                       }`}
                     >
                       {tab.label}
@@ -267,10 +293,12 @@ const CourseDetailPage: React.FC = () => {
               </div>
 
               <div className="p-6">
-                {activeTab === 'overview' && (
+                {activeTab === "overview" && (
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">What you'll learn</h3>
+                      <h3 className="text-xl font-semibold mb-4">
+                        What you'll learn
+                      </h3>
                       <div className="grid md:grid-cols-2 gap-3">
                         {[
                           "Master the fundamentals of the subject",
@@ -278,7 +306,7 @@ const CourseDetailPage: React.FC = () => {
                           "Learn industry best practices",
                           "Get hands-on experience",
                           "Understand advanced concepts",
-                          "Prepare for job interviews"
+                          "Prepare for job interviews",
                         ].map((item, index) => (
                           <div key={index} className="flex items-start">
                             <Check className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
@@ -289,27 +317,35 @@ const CourseDetailPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">Course Description</h3>
+                      <h3 className="text-xl font-semibold mb-4">
+                        Course Description
+                      </h3>
                       <div className="prose max-w-none text-gray-700">
                         <p className="mb-4">
-                          This comprehensive course is designed to take you from beginner to advanced level. 
-                          Whether you're just starting out or looking to enhance your existing skills, 
-                          this course provides everything you need to succeed.
+                          This comprehensive course is designed to take you from
+                          beginner to advanced level. Whether you're just
+                          starting out or looking to enhance your existing
+                          skills, this course provides everything you need to
+                          succeed.
                         </p>
                         <p className="mb-4">
-                          You'll learn through hands-on projects, real-world examples, and practical exercises 
-                          that will help you build a strong foundation and develop the confidence to tackle 
-                          complex challenges.
+                          You'll learn through hands-on projects, real-world
+                          examples, and practical exercises that will help you
+                          build a strong foundation and develop the confidence
+                          to tackle complex challenges.
                         </p>
                         <p>
-                          By the end of this course, you'll have the skills and knowledge needed to excel 
-                          in your field and advance your career.
+                          By the end of this course, you'll have the skills and
+                          knowledge needed to excel in your field and advance
+                          your career.
                         </p>
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">Requirements</h3>
+                      <h3 className="text-xl font-semibold mb-4">
+                        Requirements
+                      </h3>
                       <ul className="space-y-2 text-gray-700">
                         <li>• Basic computer knowledge</li>
                         <li>• No prior experience required</li>
@@ -319,26 +355,41 @@ const CourseDetailPage: React.FC = () => {
                   </div>
                 )}
 
-                {activeTab === 'curriculum' && (
+                {activeTab === "curriculum" && (
                   <div>
-                    <h3 className="text-xl font-semibold mb-6">Course Curriculum</h3>
+                    <h3 className="text-xl font-semibold mb-6">
+                      Course Curriculum
+                    </h3>
                     <div className="space-y-4">
                       {courseModules.map((module, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg">
+                        <div
+                          key={index}
+                          className="border border-gray-200 rounded-lg"
+                        >
                           <div className="p-4 flex items-center justify-between">
                             <div className="flex items-center">
-                              <div className={`w-6 h-6 rounded-full mr-4 flex items-center justify-center ${
-                                module.completed ? 'bg-green-600' : 'bg-gray-300'
-                              }`}>
+                              <div
+                                className={`w-6 h-6 rounded-full mr-4 flex items-center justify-center ${
+                                  module.completed
+                                    ? "bg-green-600"
+                                    : "bg-gray-300"
+                                }`}
+                              >
                                 {module.completed ? (
                                   <Check className="w-4 h-4 text-white" />
                                 ) : (
-                                  <span className="text-xs text-gray-600">{index + 1}</span>
+                                  <span className="text-xs text-gray-600">
+                                    {index + 1}
+                                  </span>
                                 )}
                               </div>
                               <div>
-                                <h4 className="font-medium text-gray-800">{module.title}</h4>
-                                <p className="text-sm text-gray-500">{module.duration}</p>
+                                <h4 className="font-medium text-gray-800">
+                                  {module.title}
+                                </h4>
+                                <p className="text-sm text-gray-500">
+                                  {module.duration}
+                                </p>
                               </div>
                             </div>
                             <PlayCircle className="w-5 h-5 text-gray-400" />
@@ -349,53 +400,68 @@ const CourseDetailPage: React.FC = () => {
                   </div>
                 )}
 
-                {activeTab === 'instructor' && (
+                {activeTab === "instructor" && (
                   <div>
                     <div className="flex items-start space-x-6">
-                      <img 
+                      <img
                         src={instructor.avatar}
                         alt={instructor.name}
                         className="w-24 h-24 rounded-full"
                       />
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold mb-2">{instructor.name}</h3>
+                        <h3 className="text-xl font-semibold mb-2">
+                          {instructor.name}
+                        </h3>
                         <p className="text-gray-600 mb-4">{instructor.title}</p>
-                        
+
                         <div className="grid grid-cols-3 gap-6 mb-6">
                           <div className="text-center">
-                            <div className="font-semibold text-lg">{instructor.rating}</div>
+                            <div className="font-semibold text-lg">
+                              {instructor.rating}
+                            </div>
                             <div className="text-sm text-gray-500">Rating</div>
                           </div>
                           <div className="text-center">
-                            <div className="font-semibold text-lg">{instructor.students}</div>
-                            <div className="text-sm text-gray-500">Students</div>
+                            <div className="font-semibold text-lg">
+                              {instructor.students}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              Students
+                            </div>
                           </div>
                           <div className="text-center">
-                            <div className="font-semibold text-lg">{instructor.courses}</div>
+                            <div className="font-semibold text-lg">
+                              {instructor.courses}
+                            </div>
                             <div className="text-sm text-gray-500">Courses</div>
                           </div>
                         </div>
-                        
+
                         <p className="text-gray-700">{instructor.bio}</p>
                       </div>
                     </div>
                   </div>
                 )}
 
-                {activeTab === 'reviews' && (
+                {activeTab === "reviews" && (
                   <div>
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-xl font-semibold">Student Reviews</h3>
                       <div className="flex items-center">
                         <Star className="w-5 h-5 text-yellow-400 mr-1" />
                         <span className="font-semibold">{course.rating}</span>
-                        <span className="text-gray-500 ml-2">({course.students.toLocaleString()} reviews)</span>
+                        <span className="text-gray-500 ml-2">
+                          ({course.students.toLocaleString()} reviews)
+                        </span>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-6">
                       {reviews.map((review, index) => (
-                        <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0">
+                        <div
+                          key={index}
+                          className="border-b border-gray-200 pb-6 last:border-b-0"
+                        >
                           <div className="flex items-start space-x-4">
                             <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
                               <User className="w-5 h-5 text-gray-600" />
@@ -406,10 +472,15 @@ const CourseDetailPage: React.FC = () => {
                                 <div className="flex items-center">
                                   <div className="flex mr-2">
                                     {[...Array(review.rating)].map((_, i) => (
-                                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                                      <Star
+                                        key={i}
+                                        className="w-4 h-4 text-yellow-400 fill-current"
+                                      />
                                     ))}
                                   </div>
-                                  <span className="text-sm text-gray-500">{review.date}</span>
+                                  <span className="text-sm text-gray-500">
+                                    {review.date}
+                                  </span>
                                 </div>
                               </div>
                               <p className="text-gray-700">{review.comment}</p>
@@ -430,15 +501,17 @@ const CourseDetailPage: React.FC = () => {
               <h3 className="text-lg font-semibold mb-4">Related Courses</h3>
               <div className="space-y-4">
                 {featuredCourses
-                  .filter(c => c.id !== course.id && c.category === course.category)
+                  .filter(
+                    (c) => c.id !== course.id && c.category === course.category
+                  )
                   .slice(0, 3)
                   .map((relatedCourse) => (
-                    <div 
+                    <div
                       key={relatedCourse.id}
                       onClick={() => navigate(`/course/${relatedCourse.id}`)}
                       className="flex space-x-3 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
                     >
-                      <img 
+                      <img
                         src={relatedCourse.image}
                         alt={relatedCourse.title}
                         className="w-16 h-12 object-cover rounded"
@@ -447,10 +520,14 @@ const CourseDetailPage: React.FC = () => {
                         <h4 className="text-sm font-medium text-gray-800 line-clamp-2 mb-1">
                           {relatedCourse.title}
                         </h4>
-                        <p className="text-xs text-gray-500">{relatedCourse.instructor}</p>
+                        <p className="text-xs text-gray-500">
+                          {relatedCourse.instructor}
+                        </p>
                         <div className="flex items-center mt-1">
                           <Star className="w-3 h-3 text-yellow-400 mr-1" />
-                          <span className="text-xs text-gray-600">{relatedCourse.rating}</span>
+                          <span className="text-xs text-gray-600">
+                            {relatedCourse.rating}
+                          </span>
                         </div>
                       </div>
                     </div>
