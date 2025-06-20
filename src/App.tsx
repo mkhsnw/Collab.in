@@ -13,6 +13,8 @@ import DashboardPage from "./pages/DashboardPage";
 import HomePage from "./pages/HomePage";
 import VideoCoursePage from "./pages/VideoCoursePage";
 import PortfolioPage from "./pages/PortfolioPage";
+import ProjectDetailPage from "./pages/PorjectDetailPage";
+import ProjectListPage from "./pages/ProjectListPage";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/course/:id" element={<CourseDetailPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/portfolio/:courseId" element={<PortfolioPage />} />
+        <Route path="/projects" element={<ProjectListPage />}></Route>
+        <Route path="/project/:id" element={<ProjectDetailPage />}></Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
