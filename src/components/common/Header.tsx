@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
     // Setelah logout, arahkan ke halaman home
     localStorage.removeItem("currentUser");
     // Refresh halaman untuk memastikan state di seluruh aplikasi diperbarui
-    window.location.href = "/home";
+    navigate("/home");
   };
 
   // Menutup dropdown saat klik di luar

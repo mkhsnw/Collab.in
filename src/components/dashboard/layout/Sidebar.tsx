@@ -5,6 +5,7 @@ import {
   MapIcon,
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 interface SidebarProps {
   currentView: string;
   setCurrentView: (view: string) => void;
@@ -19,6 +20,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
     setCurrentView(view);
     closeMobileSidebar();
   };
+
+  const navigate = useNavigate();
   const navItems = [
     {
       id: "dashboard",
@@ -39,13 +42,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <div className="h-full flex flex-col">
       <div className="flex items-center justify-center p-4">
-        <a href="/home">
+        <button onClick={() => navigate("/home")}>
           <img
             src="/collabin.png"
             alt="Logo"
             className="max-w-full h-auto max-h-20 object-contain"
           />
-        </a>
+        </button>
       </div>
       <div className="flex-1 py-4">
         <nav className="px-2 space-y-1">
@@ -74,7 +77,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="p-4 border-t">
         <button
           className="w-full flex items-center px-3 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
-          onClick={() => (window.location.href = "/home")}
+          onClick={() => navigate("/home")}
         >
           <ArrowLeftOnRectangleIcon className="text-gray-500 size-6" />
           <span className="ml-3">Keluar</span>

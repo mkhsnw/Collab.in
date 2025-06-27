@@ -131,10 +131,12 @@ const SignUpPage = () => {
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-lg mb-6">
-            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">C</span>
-            </div>
+          <div className="inline-flex items-center justify-center mb-6">
+            <img
+              src="/collabin.png"
+              alt="collabin logo"
+              className="h-40 w-auto"
+            />
           </div>
 
           <h1 className="text-3xl font-bold text-black mb-2">Create Account</h1>
