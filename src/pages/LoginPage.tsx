@@ -81,8 +81,9 @@ const LoginPage = () => {
         localStorage.setItem(
           "currentUser",
           JSON.stringify({
-            ...userData,
-            loginTime: new Date().toISOString(),
+            name: userData.name, // Pastikan nama ada di userData saat registrasi
+            email: formData.email,
+            avatar: "/assets/profile.png",
           })
         );
 

@@ -1,6 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Star, Users, Clock, Heart, Play } from "lucide-react";
+import {
+  StarIcon,
+  PlayIcon,
+  UsersIcon,
+  ClockIcon,
+  HeartIcon,
+} from "@heroicons/react/24/outline";
 import type { Course } from "../../types";
 
 interface CourseCardProps {
@@ -39,7 +45,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
               // Add to favorites logic here
             }}
           >
-            <Heart className="w-4 h-4" />
+            <HeartIcon className="w-4 h-4" />
           </button>
         </div>
         <div className="absolute bottom-4 left-4">
@@ -48,7 +54,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           </span>
         </div>
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <Play className="w-12 h-12 text-white" />
+          <PlayIcon className="w-12 h-12 text-white" />
         </div>
       </div>
 
@@ -62,15 +68,15 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 
         <div className="flex items-center space-x-4 mb-4 text-sm text-gray-500">
           <div className="flex items-center">
-            <Star className="w-4 h-4 text-yellow-400 mr-1" />
+            <StarIcon />
             <span>{course.rating}</span>
           </div>
           <div className="flex items-center">
-            <Users className="w-4 h-4 mr-1" />
+            <UsersIcon className="w-4 h-4 mr-1" />
             <span>{course.students.toLocaleString()}</span>
           </div>
           <div className="flex items-center">
-            <Clock className="w-4 h-4 mr-1" />
+            <ClockIcon className="w-4 h-4 mr-1" />
             <span>{course.duration}</span>
           </div>
         </div>

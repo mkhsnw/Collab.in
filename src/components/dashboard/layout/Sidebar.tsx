@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  LayoutDashboardIcon,
+  Squares2X2Icon,
   UserIcon,
   MapIcon,
-  LogOutIcon,
-} from "lucide-react";
+  ArrowLeftOnRectangleIcon,
+} from "@heroicons/react/24/outline";
 interface SidebarProps {
   currentView: string;
   setCurrentView: (view: string) => void;
@@ -23,17 +23,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
     {
       id: "dashboard",
       label: "Dashboard",
-      icon: <LayoutDashboardIcon size={20} />,
+      icon: <Squares2X2Icon />,
     },
     {
       id: "profile",
       label: "Profil Saya",
-      icon: <UserIcon size={20} />,
+      icon: <UserIcon />,
     },
     {
       id: "roadmaps",
       label: "Jalur Belajar",
-      icon: <MapIcon size={20} />,
+      icon: <MapIcon />,
     },
   ];
   return (
@@ -72,8 +72,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </nav>
       </div>
       <div className="p-4 border-t">
-        <button className="w-full flex items-center px-3 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-          <LogOutIcon size={20} className="text-gray-500" />
+        <button
+          className="w-full flex items-center px-3 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
+          onClick={() => (window.location.href = "/home")}
+        >
+          <ArrowLeftOnRectangleIcon className="text-gray-500 size-6" />
           <span className="ml-3">Keluar</span>
         </button>
       </div>

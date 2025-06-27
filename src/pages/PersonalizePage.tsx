@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   GraduationCap,
   Briefcase,
-  Building2,
   ArrowRight,
   Loader2,
   Check,
@@ -65,15 +64,6 @@ const PersonalizePage: React.FC = () => {
       color: "text-green-600",
       bgColor: "bg-green-50",
       hoverColor: "hover:bg-green-100",
-    },
-    {
-      id: "company",
-      title: "Part of Company",
-      description: "I work as part of a team in an organization or company",
-      icon: <Building2 className="w-8 h-8" />,
-      color: "text-purple-600",
-      bgColor: "bg-purple-50",
-      hoverColor: "hover:bg-purple-100",
     },
   ];
 
@@ -148,14 +138,13 @@ const PersonalizePage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-12">
           {/* Logo */}
-          <div className="flex items-center justify-center mb-8">
+          <div className="flex items-center justify-center mb-2">
             <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">C</span>
-              </div>
-              <span className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Collab.In
-              </span>
+              <img
+                src="/collabin.png"
+                alt="Collab.in Logo"
+                className="h-24 w-auto"
+              />
             </div>
           </div>
 
@@ -240,7 +229,7 @@ const PersonalizePage: React.FC = () => {
           <button
             onClick={handleContinue}
             disabled={!selectedProfession || isLoading}
-            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg disabled:cursor-not-allowed disabled:transform-none disabled:opacity-60"
+            className="w-full bg-[#504DFF] hover:bg-blue-600 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg disabled:cursor-not-allowed disabled:transform-none disabled:opacity-60"
           >
             {isLoading ? (
               <div className="flex items-center justify-center">

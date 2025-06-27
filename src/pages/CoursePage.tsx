@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from "react";
 import {
-  Search,
-  Filter,
-  Grid,
-  List,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+  MagnifyingGlassIcon,
+  FunnelIcon,
+  Squares2X2Icon,
+  ListBulletIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import CourseCard from "../components/homepage/CourseCard";
@@ -178,7 +178,7 @@ const CoursesPage: React.FC = () => {
           className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           aria-label="Previous page"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeftIcon className="w-4 h-4" />
         </button>
 
         {/* Page Numbers */}
@@ -210,7 +210,7 @@ const CoursesPage: React.FC = () => {
           className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           aria-label="Next page"
         >
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRightIcon className="w-4 h-4" />
         </button>
       </div>
     );
@@ -232,7 +232,7 @@ const CoursesPage: React.FC = () => {
 
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search courses, instructors, or topics..."
@@ -272,7 +272,7 @@ const CoursesPage: React.FC = () => {
                     onClick={() => setShowFilters(!showFilters)}
                     className="lg:hidden flex items-center text-gray-600 hover:text-gray-800 transition-colors"
                   >
-                    <Filter className="w-4 h-4 mr-2" />
+                    <FunnelIcon className="w-4 h-4 mr-2" />
                     Filters
                   </button>
                 </div>
@@ -291,7 +291,7 @@ const CoursesPage: React.FC = () => {
                         </option>
                       ))}
                     </select>
-                    <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                    <ChevronDownIcon className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                   </div>
 
                   {/* View Mode Toggle */}
@@ -304,7 +304,7 @@ const CoursesPage: React.FC = () => {
                           : "bg-white text-gray-600 hover:bg-gray-50"
                       } transition-colors`}
                     >
-                      <Grid className="w-4 h-4" />
+                      <Squares2X2Icon className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => setViewMode("list")}
@@ -314,7 +314,7 @@ const CoursesPage: React.FC = () => {
                           : "bg-white text-gray-600 hover:bg-gray-50"
                       } transition-colors`}
                     >
-                      <List className="w-4 h-4" />
+                      <ListBulletIcon className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -342,7 +342,7 @@ const CoursesPage: React.FC = () => {
             ) : (
               <div className="text-center py-12">
                 <div className="text-gray-400 mb-4">
-                  <Search className="w-16 h-16 mx-auto" />
+                  <MagnifyingGlassIcon className="w-16 h-16 mx-auto" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   No courses found

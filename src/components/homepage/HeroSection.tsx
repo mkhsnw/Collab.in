@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <section className="bg-[url(/assets/banner.png)] text-white py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,7 +16,12 @@ const HeroSection: React.FC = () => {
               and advance your career.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-[#584DFF] text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:text-blue-600  transition-colors">
+              <button
+                className="bg-[#584DFF] text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:text-blue-600  transition-colors"
+                onClick={() => {
+                  navigate("/courses");
+                }}
+              >
                 Explore Courses
               </button>
               <button className="bg-[#584DFF] border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">

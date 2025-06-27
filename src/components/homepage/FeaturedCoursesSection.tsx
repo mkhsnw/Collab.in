@@ -21,7 +21,9 @@ const FeaturedCoursesSection: React.FC<FeaturedCoursesSectionProps> = ({
               Discover our most popular and highly-rated courses
             </p>
           </div>
-          <button className="bg-white border border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-50 transition-colors duration-200 font-medium">
+          <button className="bg-white border border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-50 transition-colors duration-200 font-medium" onClick={() => {
+            window.location.href = "/courses"; 
+          }}>
             All Courses
           </button>
         </div>

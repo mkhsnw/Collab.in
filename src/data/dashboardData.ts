@@ -1,15 +1,15 @@
 import {
-  Code,
-  Briefcase,
-  Camera,
-  Palette,
-  Music,
-  TrendingUp,
-  BookOpen,
-  Target,
-  Award,
-  Users,
-} from "lucide-react";
+  CodeBracketIcon,
+  BriefcaseIcon,
+  CameraIcon,
+  PaintBrushIcon,
+  MusicalNoteIcon,
+  ArrowTrendingUpIcon,
+  BookOpenIcon,
+  BanknotesIcon,
+  BeakerIcon,
+  UsersIcon,
+} from "@heroicons/react/24/outline";
 import type {
   Category,
   Course,
@@ -19,27 +19,64 @@ import type {
   User,
 } from "../types/index.ts";
 
-export const currentUser: User = {
-  name: "Nawwari",
-  avatar: "/assets/profile.png",
-  email: "john.doe@example.com",
+export const getCurrentUser = (): User | undefined => {
+  const storedUser = localStorage.getItem("currentUser");
+  if (storedUser) {
+    try {
+      // Parse data JSON yang tersimpan
+      const userData: User = JSON.parse(storedUser);
+      return userData;
+    } catch (error) {
+      console.error(
+        "Gagal mem-parsing data pengguna dari localStorage:",
+        error
+      );
+      // Hapus data yang rusak jika ada masalah
+      localStorage.removeItem("currentUser");
+      return undefined;
+    }
+  }
+  return undefined;
+};
+
+export const currentUser: User = getCurrentUser() || {
+  name: "Andi Pratama",
+  email: "andi@gmail.com",
+  avatar:
+    "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=120&q=80",
 };
 
 export const categories: Category[] = [
-  { name: "Development", icon: Code, color: "bg-purple-100 text-purple-600" },
-  { name: "Business", icon: Briefcase, color: "bg-blue-100 text-blue-600" },
-  { name: "Photography", icon: Camera, color: "bg-pink-100 text-pink-600" },
-  { name: "Design", icon: Palette, color: "bg-green-100 text-green-600" },
-  { name: "Music", icon: Music, color: "bg-yellow-100 text-yellow-600" },
-  { name: "Marketing", icon: TrendingUp, color: "bg-red-100 text-red-600" },
+  {
+    name: "Development",
+    icon: CodeBracketIcon,
+    color: "bg-purple-100 text-purple-600",
+  },
+  { name: "Business", icon: BriefcaseIcon, color: "bg-blue-100 text-blue-600" },
+  { name: "Photography", icon: CameraIcon, color: "bg-pink-100 text-pink-600" },
+  {
+    name: "Design",
+    icon: PaintBrushIcon,
+    color: "bg-green-100 text-green-600",
+  },
+  {
+    name: "Music",
+    icon: MusicalNoteIcon,
+    color: "bg-yellow-100 text-yellow-600",
+  },
+  {
+    name: "Marketing",
+    icon: ArrowTrendingUpIcon,
+    color: "bg-red-100 text-red-600",
+  },
   {
     name: "Content Writing",
-    icon: BookOpen,
+    icon: BookOpenIcon,
     color: "bg-indigo-100 text-indigo-600",
   },
-  { name: "Finance", icon: Target, color: "bg-teal-100 text-teal-600" },
-  { name: "Science", icon: Award, color: "bg-orange-100 text-orange-600" },
-  { name: "Network", icon: Users, color: "bg-cyan-100 text-cyan-600" },
+  { name: "Finance", icon: BanknotesIcon, color: "bg-teal-100 text-teal-600" },
+  { name: "Science", icon: BeakerIcon, color: "bg-orange-100 text-orange-600" },
+  { name: "Network", icon: UsersIcon, color: "bg-cyan-100 text-cyan-600" },
 ];
 
 export const featuredCourses: Course[] = [

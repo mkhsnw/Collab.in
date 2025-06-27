@@ -1,238 +1,285 @@
-import React, { useState } from "react";
-import { Search, Menu, X } from "lucide-react";
-import type { User } from "../../types";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  UserIcon,
+  ArrowRightOnRectangleIcon,
+  Squares2X2Icon,
+  ShoppingCartIcon,
+} from "@heroicons/react/24/outline";
+import type { User as UserType } from "../../types";
 import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
-  currentUser: User;
+  currentUser?: UserType; // Dibuat opsional untuk menangani status logout
 }
 
 const Header: React.FC<HeaderProps> = ({ currentUser }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-
-  const toggleSearch = (): void => {
-    setIsSearchOpen(!isSearchOpen);
-  };
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] =
+    useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const toggleMobileMenu = (): void => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const navigate = useNavigate();
+  const handleLogout = (): void => {
+    // Logika untuk logout, misalnya menghapus token atau state user
+    // Setelah logout, arahkan ke halaman home
+    localStorage.removeItem("currentUser");
+    // Refresh halaman untuk memastikan state di seluruh aplikasi diperbarui
+    window.location.href = "/home";
+  };
+
+  // Menutup dropdown saat klik di luar
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    setIsMobileMenuOpen(false);
+    setIsProfileDropdownOpen(false);
+  };
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
+    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <div
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={() => handleNavigate("/home")}
+          >
             <img
               src="/collabin.png"
-              alt="LearnPress Logo"
+              alt="Collab.in Logo"
               className="h-40 w-auto"
             />
           </div>
 
-          {/* Navigation */}
+          {/* Navigasi Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
             <button
-              onClick={() => navigate("/home")}
+              onClick={() => handleNavigate("/home")}
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
             >
               Home
             </button>
             <button
-              onClick={() => navigate("/courses")}
+              onClick={() => handleNavigate("/courses")}
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
             >
               Courses
             </button>
             <button
-              onClick={() => navigate("/projects")}
+              onClick={() => handleNavigate("/projects")}
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
             >
               Projects
             </button>
             <button
-              onClick={() => navigate("/about")}
+              onClick={() => handleNavigate("/discussion")}
               className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
             >
-              About
-            </button>
-            <button
-              onClick={() => navigate("/contact")}
-              className="text-gray-700 hover:text-[#584DFF] font-medium transition-colors"
-            >
-              Contact
+              Forum
             </button>
           </nav>
 
-          {/* Right side - Profile, Search, Notifications */}
-          <div className="flex items-center space-x-4">
-            {/* Profile Section */}
-            <div className="hidden md:flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-200">
-                <button onClick={() => navigate("/dashboard")}>
-                  {" "}
-                  <img
-                    src={currentUser.avatar}
-                    alt={currentUser.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback to default avatar if image fails
-                      const target = e.target as HTMLImageElement;
-                      target.src =
-                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236B7280'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
-                    }}
-                  />
-                </button>
-              </div>
-              <div className="hidden lg:block">
-                <p className="text-sm font-medium text-gray-800">
-                  {currentUser.name}
-                </p>
-              </div>
-            </div>
-
-            {/* Search Button and Expandable Search */}
-            <div className="relative">
-              {isSearchOpen ? (
-                // Expanded search input
-                <div className="flex items-center">
-                  <div className="relative">
-                    <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
-                    <input
-                      type="text"
-                      placeholder="Search courses..."
-                      className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#584DFF] focus:border-transparent transition-all duration-200"
-                      autoFocus
-                      onBlur={() => setIsSearchOpen(false)}
-                    />
-                  </div>
-                  <button
-                    onClick={toggleSearch}
-                    className="ml-2 text-gray-400 hover:text-gray-600 transition-colors"
-                    aria-label="Close search"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-              ) : (
-                // Search button
+          {/* Bagian Kanan - Ikon & Profil / Tombol Login */}
+          <div className="flex items-center space-x-2 md:space-x-4">
+            {currentUser ? (
+              // --- TAMPILAN JIKA SUDAH LOGIN ---
+              <>
                 <button
-                  onClick={toggleSearch}
-                  className="text-[#584DFF] border-1 rounded-full hover:text-gray-800 transition-colors p-2 hover:bg-gray-100"
-                  aria-label="Open search"
+                  onClick={() => handleNavigate("/cart")}
+                  className="text-gray-600 hover:text-[#584DFF] p-2 rounded-full hover:bg-gray-100 transition-colors"
+                  aria-label="Shopping Cart"
                 >
-                  <Search className="w-5 h-5" />
+                  <ShoppingCartIcon className="h-6 w-6" />
                 </button>
-              )}
-            </div>
+                <div className="relative hidden md:block" ref={dropdownRef}>
+                  <button
+                    onClick={() =>
+                      setIsProfileDropdownOpen(!isProfileDropdownOpen)
+                    }
+                    className="flex items-center space-x-3 focus:outline-none"
+                  >
+                    <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-200 hover:border-[#584DFF] transition">
+                      <img
+                        src={currentUser.avatar}
+                        alt={currentUser.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </button>
+                  {isProfileDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
+                      <div className="px-4 py-2 border-b">
+                        <p className="text-sm font-semibold text-gray-900">
+                          {currentUser.name}
+                        </p>
+                        <p className="text-xs text-gray-500 truncate">
+                          {currentUser.email}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => handleNavigate("/dashboard")}
+                        className="w-full text-left flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#584DFF]"
+                      >
+                        <Squares2X2Icon className="w-4 h-4 mr-3" />
+                        Dashboard
+                      </button>
+                      <button
+                        onClick={() => handleNavigate("/profile")}
+                        className="w-full text-left flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#584DFF]"
+                      >
+                        <UserIcon className="w-4 h-4 mr-3" />
+                        Profil Saya
+                      </button>
+                      <div className="border-t my-2"></div>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-left flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                      >
+                        <ArrowRightOnRectangleIcon className="w-4 h-4 mr-3" />
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              // --- TAMPILAN JIKA BELUM LOGIN ---
+              <div className="hidden md:flex items-center space-x-2">
+                <button
+                  onClick={() => handleNavigate("/login")}
+                  className="text-white bg-[#584DFF] hover:bg-blue-600 font-medium py-2 px-4 rounded-md transition-colors"
+                >
+                  Login
+                </button>
+              </div>
+            )}
 
-            {/* Notifications */}
-            {/* <div className="relative">
-                    <button
-                      className="text-gray-600 hover:text-gray-800 transition-colors p-2 hover:bg-gray-100 rounded-lg relative"
-                      aria-label="Notifications"
-                    >
-                      <Bell className="w-5 h-5" />
-                      <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full flex items-center justify-center">
-                        <span className="text-xs text-white font-bold">3</span>
-                      </span>
-                    </button>
-                  </div> */}
-
-            {/* Mobile menu button */}
+            {/* Tombol Menu Mobile */}
             <button
               className="md:hidden text-gray-600 hover:text-gray-800 p-2"
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <XMarkIcon className="w-6 h-6" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Bars3Icon className="w-6 h-6" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Menu Mobile */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-4">
-            {/* Mobile Profile */}
-            <div className="flex items-center space-x-3 px-4 py-3 border-b border-gray-100 mb-4">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200">
-                <img
-                  src={currentUser.avatar}
-                  alt={currentUser.name}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236B7280'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
-                  }}
-                />
+            {currentUser && (
+              <div className="flex items-center space-x-3 px-4 py-3 border-b border-gray-100 mb-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200">
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-gray-800">
+                    {currentUser.name}
+                  </p>
+                  <p className="text-xs text-gray-500">{currentUser.email}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-medium text-gray-800">
-                  {currentUser.name}
-                </p>
-                <p className="text-xs text-gray-500">{currentUser.email}</p>
-              </div>
-            </div>
+            )}
 
-            {/* Mobile Search */}
-            <div className="px-4 mb-4">
-              <div className="relative">
-                <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
-                <input
-                  type="text"
-                  placeholder="Search courses..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-
-            {/* Mobile Navigation */}
-            <nav className="flex flex-col space-y-4 px-4">
-              <a
-                href="#"
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+            {/* Navigasi Mobile */}
+            <nav className="flex flex-col space-y-1 px-2">
+              <button
+                onClick={() => handleNavigate("/home")}
+                className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
               >
                 Home
-              </a>
-              <a
-                href="#"
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+              </button>
+              <button
+                onClick={() => handleNavigate("/courses")}
+                className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
               >
                 Courses
-              </a>
-              <a
-                href="#"
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+              </button>
+              <button
+                onClick={() => handleNavigate("/projects")}
+                className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
               >
-                About
-              </a>
-              <a
-                href="#"
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+                Projects
+              </button>
+              <button
+                onClick={() => handleNavigate("/forum")}
+                className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
               >
-                Contact
-              </a>
-              <a
-                href="#"
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
-              >
-                Profile Settings
-              </a>
-              <a
-                href="#"
-                className="text-red-600 hover:text-red-700 font-medium py-2"
-              >
-                Logout
-              </a>
+                Forum
+              </button>
+              <div className="border-t my-2"></div>
+              {currentUser ? (
+                <>
+                  <button
+                    onClick={() => handleNavigate("/dashboard")}
+                    className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
+                  >
+                    Dashboard
+                  </button>
+                  <button
+                    onClick={() => handleNavigate("/profile")}
+                    className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
+                  >
+                    Profil Saya
+                  </button>
+                  <button
+                    onClick={() => handleNavigate("/settings")}
+                    className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
+                  >
+                    Pengaturan
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className="text-red-600 hover:bg-red-50 font-medium py-2 px-2 rounded-md text-left"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleNavigate("/login")}
+                    className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
+                  >
+                    Login
+                  </button>
+                  <button
+                    onClick={() => handleNavigate("/register")}
+                    className="text-gray-700 hover:bg-gray-100 font-medium py-2 px-2 rounded-md text-left"
+                  >
+                    Register
+                  </button>
+                </>
+              )}
             </nav>
           </div>
         )}
@@ -240,5 +287,4 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
     </header>
   );
 };
-
 export default Header;

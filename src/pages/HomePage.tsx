@@ -12,15 +12,17 @@ import ArticlesSection from "../components/homepage/ArticleSection";
 
 // Import Data
 import {
-  currentUser,
+  getCurrentUser,
   categories,
   featuredCourses,
   stats,
   testimonials,
   articles,
 } from "../data/dashboardData";
+import type { User } from "../types";
 
 const HomePage: React.FC = () => {
+  const [currentUser, setCurrentUser] = useState<User | undefined>(undefined);
   const [activeCategory, setActiveCategory] =
     useState<string>("All Categories");
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -32,6 +34,8 @@ const HomePage: React.FC = () => {
       try {
         setIsLoading(true);
         setError(null);
+        const user = getCurrentUser();
+        setCurrentUser(user);
 
         await new Promise((resolve) => setTimeout(resolve, 1000));
 

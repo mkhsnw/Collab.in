@@ -240,6 +240,7 @@ const ReviewCard = ({
 const ProjectDetailPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -247,20 +248,48 @@ const ProjectDetailPage: React.FC = () => {
     message: "",
   });
 
+  console.log(formData);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  const handleSubmitProposal = (e: React.FormEvent) => {
+
+  const handleSubmitProposal = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Proposal Kontribusi untuk Proyek: ${projectData.title}`;
-    const body = `Halo ${projectData.mentor.name},\n\nSaya ingin mengajukan proposal untuk berkontribusi pada proyek "${projectData.title}".\n\nBerikut adalah data diri saya:\n- Nama: ${formData.name}\n- Email: ${formData.email}\n- URL Portofolio/GitHub: ${formData.portfolioUrl}\n\nPesan Tambahan:\n${formData.message}\n\nTerima kasih.\nHormat saya,\n${formData.name}`;
-    window.location.href = `mailto:${
-      projectData.mentor.email
-    }?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setIsModalOpen(false);
+    setIsSubmitting(true);
+
+    try {
+      // // Simulasi pengiriman data ke API
+      // // Ganti dengan endpoint API Anda yang sebenarnya
+      // const response = await fetch(`/api/projects/${projectData.id}/apply`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
+
+      // console.log(response)
+
+      // Simulasi respons dari server
+      if (Math.random() < 0.1) { // 10% chance of failure for simulation
+         throw new Error('Gagal mengirim proposal. Coba lagi nanti.');
+      }
+
+      // Jika berhasil
+      alert('Proposal berhasil dikirim! Anda akan menerima notifikasi jika ada pembaruan.');
+      setIsModalOpen(false);
+
+    } catch (error) {
+      console.error('Error submitting proposal:', error);
+      alert((error as Error).message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
   const TabButton = ({ id, label }: { id: string; label: string }) => (
     <button
       onClick={() => setActiveTab(id)}
@@ -670,10 +699,11 @@ const ProjectDetailPage: React.FC = () => {
               <div className="pt-4 flex justify-end">
                 <button
                   type="submit"
-                  className="bg-[#584DFF] text-white font-bold py-2.5 px-6 rounded-lg flex items-center"
+                  disabled={isSubmitting}
+                  className="bg-[#584DFF] text-white font-bold py-2.5 px-6 rounded-lg flex items-center disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
                   <Mail size={18} className="mr-2" />
-                  Kirim Proposal
+                  {isSubmitting ? 'Mengirim...' : 'Kirim Proposal'}
                 </button>
               </div>
             </form>

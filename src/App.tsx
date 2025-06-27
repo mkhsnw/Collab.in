@@ -15,12 +15,19 @@ import VideoCoursePage from "./pages/VideoCoursePage";
 import PortfolioPage from "./pages/PortfolioPage";
 import ProjectDetailPage from "./pages/PorjectDetailPage";
 import ProjectListPage from "./pages/ProjectListPage";
+import ForumPage from "./pages/ForumPage";
+import UserProfilePage from "./pages/UserProfilePage";
+import EditProfilePage from "./pages/EditProfilePage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import NewForumPage from "./pages/NewForumPage";
+import ForumDetailPage from "./pages/ForumDetailPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/personalize" element={<PersonalizePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -33,6 +40,13 @@ function App() {
         <Route path="/portfolio/:courseId" element={<PortfolioPage />} />
         <Route path="/projects" element={<ProjectListPage />}></Route>
         <Route path="/project/:id" element={<ProjectDetailPage />}></Route>
+        <Route path="/discussion" element={<ForumPage />}></Route>
+        <Route path="/profile" element={<UserProfilePage />}></Route>
+        <Route path="/profile/edit" element={<EditProfilePage />}></Route>
+        <Route path="/cart" element={<CartPage />}></Route>
+        <Route path="/checkout" element={<CheckoutPage />}></Route>
+        <Route path="/newforum" element={<NewForumPage/>}></Route>
+        <Route path="/discussion/:id" element={<ForumDetailPage/>}></Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
