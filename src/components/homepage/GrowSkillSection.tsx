@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const GrowSkillSection: React.FC = () => {
   const features = [
@@ -8,6 +9,8 @@ const GrowSkillSection: React.FC = () => {
     "Expert Instructors",
     "Lifetime Access",
   ];
+
+  const navigate = useNavigate();
 
   return (
     <section className="py-16 bg-white">
@@ -52,7 +55,7 @@ const GrowSkillSection: React.FC = () => {
             {/* CTA Button */}
             <button
               className="bg-[#584DFF] hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg"
-              onClick={() => (window.location.href = "/courses")}
+              onClick={() => navigate("/courses")}
             >
               Explorer Course
             </button>

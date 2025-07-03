@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Briefcase,
   Award,
@@ -93,6 +93,7 @@ const activityIcons = {
 // --- Komponen Utama Halaman Profil ---
 const UserProfilePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("contributions");
+  const navigate = useNavigate();
 
   const TabButton = ({ id, label }: { id: string; label: string }) => (
     <button
@@ -269,7 +270,12 @@ const UserProfilePage: React.FC = () => {
                               alt={proj.title}
                               className="h-32 w-full object-cover"
                             />
-                            <div className="p-4">
+                            <div
+                              className="p-4"
+                              onClick={() => {
+                                navigate(`/project/${proj.id}`);
+                              }}
+                            >
                               <h4 className="font-bold group-hover:text-[#584DFF] transition">
                                 {proj.title}
                               </h4>

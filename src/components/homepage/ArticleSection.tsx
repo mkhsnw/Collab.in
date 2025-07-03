@@ -1,6 +1,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import type { Article } from "../../types";
+import { useNavigate } from "react-router-dom";
 
 interface ArticlesSectionProps {
   articles: Article[];
@@ -15,6 +16,8 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({ articles }) => {
   //     day: "numeric",
   //   });
   // };
+
+  const navigate = useNavigate();
 
   return (
     <section className="py-16 bg-white">
@@ -41,7 +44,7 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({ articles }) => {
             <div
               key={index}
               className="bg-white rounded-xl shadow-lg hover:shadow-xl duration-300 overflow-hidden cursor-pointer group hover:-translate-y-2 transition-all"
-              onClick={() => (window.location.href = `/project/${index}`)}
+              onClick={() => navigate("/project/" + index)}
             >
               <div className="relative">
                 <img

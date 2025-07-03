@@ -1,5 +1,6 @@
 import React from "react";
 import type { Category } from "../../types";
+import { useNavigate } from "react-router-dom";
 
 interface CategoriesSectionProps {
   categories: Category[];
@@ -12,6 +13,8 @@ const CategoriesSection: React.FC<CategoriesSectionProps> = ({
   activeCategory,
   onCategorySelect,
 }) => {
+  console.log(onCategorySelect);
+  const navigate = useNavigate();
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +27,7 @@ const CategoriesSection: React.FC<CategoriesSectionProps> = ({
           </div>
           <button
             className={`border text-gray-700 px-6 py-2 rounded-full font-medium transition-colors duration-200 hover:bg-gray-100`}
-            onClick={() => onCategorySelect("All Categories")}
+            onClick={() => navigate("/courses")}
           >
             All Categories
           </button>

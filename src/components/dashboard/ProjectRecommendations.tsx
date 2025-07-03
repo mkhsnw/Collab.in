@@ -1,5 +1,6 @@
 import React from "react";
 import { StarIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 interface ProjectType {
   id: number;
   title: string;
@@ -15,6 +16,7 @@ interface ProjectRecommendationsProps {
 export const ProjectRecommendations: React.FC<ProjectRecommendationsProps> = ({
   projects,
 }) => {
+  const navigate = useNavigate();
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-5 border-b border-gray-200">
@@ -68,7 +70,10 @@ export const ProjectRecommendations: React.FC<ProjectRecommendationsProps> = ({
                     </span>
                   ))}
                 </div>
-                <button className="mt-3 w-full bg-white border border-[#504DFF] text-[#504DFF] px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-[#504DFF]/5 transition-colors">
+                <button
+                  className="mt-3 w-full bg-white border border-[#504DFF] text-[#504DFF] px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-[#504DFF]/5 transition-colors"
+                  onClick={() => navigate(`/project/${project.id}`)}
+                >
                   Lihat Detail
                 </button>
               </div>
