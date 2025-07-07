@@ -146,8 +146,8 @@ const ProjectListPage: React.FC = () => {
           Explore Open Source Projects
         </h1>
         <p className="mt-4 text-lg text-white/90 max-w-2xl mx-auto">
-          Choose a project that suits your interests and skills, and start your
-          journey as a contributor.
+          Discover project designed to build essential skills for open source
+          contribution Search project, instructors, or topics. ..
         </p>
       </div>
       <main className="container mx-auto px-4 lg:px-8 py-12">

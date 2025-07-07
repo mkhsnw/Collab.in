@@ -97,7 +97,7 @@ const DiscussionCard = ({
         </div>
         {discussion.status === "selesai" && (
           <span className="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
-            Selesai
+            Done
           </span>
         )}
       </div>
@@ -119,7 +119,7 @@ const DiscussionCard = ({
       </div>
       <div className="border-t border-gray-100 pt-3 flex items-center text-xs text-gray-500">
         <MessageCircle size={14} className="mr-1.5" />
-        <span>{discussion.replies} Pembahasan</span>
+        <span>{discussion.replies} Reply</span>
         <span className="mx-2">•</span>
         <span>
           Dalam:{" "}
@@ -176,10 +176,10 @@ const ForumPage: React.FC = () => {
           </div>
           <div>
             <h1 className="text-3xl font-bold text-gray-900">
-              Selamat Datang di Forum Diskusi
+              Welcome to the Discussion Forum
             </h1>
             <p className="text-gray-600 mt-1">
-              Konsultasi seputar materi belajar Anda di sini.
+              Consult about your study materials here
             </p>
           </div>
         </div>
@@ -190,11 +190,11 @@ const ForumPage: React.FC = () => {
             <div className="sticky top-8 space-y-8">
               {/* Filter */}
               <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-                <h3 className="font-bold text-lg mb-4">Filter & Urutkan</h3>
+                <h3 className="font-bold text-lg mb-4">Builder & Roller</h3>
                 <div className="space-y-4">
                   <div>
                     <label className="text-sm font-semibold text-gray-700">
-                      Filter berdasarkan
+                      Filter by
                     </label>
                     <div className="mt-2 space-y-1">
                       <label className="flex items-center">
@@ -206,7 +206,7 @@ const ForumPage: React.FC = () => {
                           onChange={(e) => setFilterStatus(e.target.value)}
                           className="form-radio text-[#584DFF]"
                         />
-                        <span className="ml-2 text-sm">Semua Diskusi</span>
+                        <span className="ml-2 text-sm">All discussion</span>
                       </label>
                       <label className="flex items-center">
                         <input
@@ -218,7 +218,7 @@ const ForumPage: React.FC = () => {
                           className="form-radio text-[#584DFF]"
                         />
                         <span className="ml-2 text-sm">
-                          Diskusi sudah selesai
+                          The discussion is over
                         </span>
                       </label>
                       <label className="flex items-center">
@@ -231,14 +231,14 @@ const ForumPage: React.FC = () => {
                           className="form-radio text-[#584DFF]"
                         />
                         <span className="ml-2 text-sm">
-                          Diskusi belum selesai
+                          The discussion is not finished
                         </span>
                       </label>
                     </div>
                   </div>
                   <div>
                     <label className="text-sm font-semibold text-gray-700">
-                      Urutkan berdasarkan
+                      Filter berdasarkan
                     </label>
                     <div className="mt-2 space-y-1">
                       <label className="flex items-center">
@@ -250,7 +250,7 @@ const ForumPage: React.FC = () => {
                           onChange={(e) => setSortBy(e.target.value)}
                           className="form-radio text-[#584DFF]"
                         />
-                        <span className="ml-2 text-sm">Diskusi Terbaru</span>
+                        <span className="ml-2 text-sm">Latest Discussions</span>
                       </label>
                       <label className="flex items-center">
                         <input
@@ -261,7 +261,7 @@ const ForumPage: React.FC = () => {
                           onChange={(e) => setSortBy(e.target.value)}
                           className="form-radio text-[#584DFF]"
                         />
-                        <span className="ml-2 text-sm">Diskusi Terlama</span>
+                        <span className="ml-2 text-sm">Oldest Discussion</span>
                       </label>
                     </div>
                   </div>
@@ -269,7 +269,7 @@ const ForumPage: React.FC = () => {
               </div>
               {/* Kata Kunci Populer */}
               <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-                <h3 className="font-bold text-lg mb-4">Kata Kunci Populer</h3>
+                <h3 className="font-bold text-lg mb-4">Popular Keywords</h3>
                 <div className="flex flex-wrap gap-2">
                   {popularTags.map((tag) => (
                     <button
@@ -293,12 +293,12 @@ const ForumPage: React.FC = () => {
                   navigate("/newforum");
                 }}
               >
-                Buat Diskusi Baru
+                Create a New Discussion
               </button>
               <div className="relative flex-grow">
                 <input
                   type="text"
-                  placeholder="Cari judul diskusi..."
+                  placeholder="Look for the discussion title..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#584DFF] focus:border-transparent transition"

@@ -39,7 +39,7 @@ const NewForumPage: React.FC = () => {
     });
 
     alert("Diskusi berhasil dibuat!");
-    navigate("/forum");
+    navigate("/discussion");
   };
 
   return (
