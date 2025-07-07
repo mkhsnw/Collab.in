@@ -96,7 +96,7 @@ const ForumDetailPage: React.FC = () => {
             className="flex items-center text-sm text-gray-600 hover:text-gray-900 mb-6"
           >
             <ArrowLeftIcon className="w-4 h-4 mr-2" />
-            Kembali ke Semua Diskusi
+            Back to All Discussions
           </button>
 
           {/* --- KONTEN DISKUSI UTAMA --- */}
@@ -138,7 +138,7 @@ const ForumDetailPage: React.FC = () => {
           <div className="mt-10">
             <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
               <ChatBubbleLeftEllipsisIcon className="w-6 h-6 mr-3 text-[#584DFF]" />
-              {replies.length} Pembahasan
+              {replies.length} Discussion
             </h2>
             <div className="space-y-6">
               {replies.map((reply) => (
@@ -170,7 +170,7 @@ const ForumDetailPage: React.FC = () => {
           {/* --- FORM BALASAN BARU --- */}
           <div className="mt-10">
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-              <h3 className="font-bold text-lg mb-4">Ikut Berdiskusi</h3>
+              <h3 className="font-bold text-lg mb-4">Join the Discussion</h3>
               <form onSubmit={handleReplySubmit} className="flex items-start">
                 {currentUser ? (
                   <img
@@ -197,7 +197,7 @@ const ForumDetailPage: React.FC = () => {
                       className="flex items-center bg-[#584DFF] text-white font-semibold py-2 px-5 rounded-lg hover:bg-opacity-90 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
                     >
                       <PaperAirplaneIcon className="w-4 h-4 mr-2" />
-                      Kirim Balasan
+                      Submit
                     </button>
                   </div>
                 </div>

@@ -18,18 +18,18 @@ import {
 import { Footer, Header } from "../components/common";
 import { currentUser } from "../data/dashboardData";
 
-// --- DATA DUMMY LENGKAP ---
+// --- COMPLETE DUMMY DATA ---
 const projectData = {
   id: "proj-001",
   category: "Web Development",
-  title: "Collab.in - Platform Kolaborasi Real-time",
+  title: "Collab.in - Real-time Collaboration Platform",
   shortDescription:
-    "Bangun platform kolaborasi open-source dari awal menggunakan tumpukan teknologi modern dan berkontribusi pada komunitas global.",
+    "Build an open-source collaboration platform from scratch using modern technology stack and contribute to the global community.",
   mentor: {
     name: "Dr. Arini Dewi",
     title: "Senior Developer & Mentor",
     avatarUrl: "https://i.pravatar.cc/150?u=arini",
-    bio: "Dr. Arini adalah seorang software architect dengan 12 tahun pengalaman dalam membangun aplikasi scalable. Beliau sangat passionate dalam membimbing talenta baru dan percaya pada kekuatan open-source untuk mendorong inovasi.",
+    bio: "Dr. Arini is a software architect with 12 years of experience in building scalable applications. She is very passionate about mentoring new talent and believes in the power of open-source to drive innovation.",
     email: "bla@gmail.com",
   },
   imageUrl:
@@ -42,14 +42,14 @@ const projectData = {
   },
   overview: {
     longDescription:
-      "<p>Proyek ini dimulai sebagai inisiatif untuk mendukung komunitas developer yang membutuhkan alat kolaborasi canggih tanpa biaya langganan yang mahal. Arsitektur kami dibangun di atas WebSocket untuk komunikasi real-time dan React untuk antarmuka yang dinamis.</p><p class='mt-4'>Kami percaya pada kekuatan kolaborasi dan ingin membangun komunitas yang solid di sekitar proyek ini. Setiap kontribusi, baik itu kode, dokumentasi, atau bahkan laporan bug, sangat kami hargai.</p>",
+      "<p>This project started as an initiative to support the developer community who need advanced collaboration tools without expensive subscription fees. Our architecture is built on WebSocket for real-time communication and React for dynamic interfaces.</p><p class='mt-4'>We believe in the power of collaboration and want to build a solid community around this project. Every contribution, whether it's code, documentation, or even bug reports, is highly appreciated.</p>",
     whatYoullDo: [
-      "Mengembangkan komponen UI yang reusable dengan React & TypeScript.",
-      "Mengimplementasikan logika WebSocket untuk fitur real-time.",
-      "Merancang dan mengelola skema database PostgreSQL.",
-      "Menulis unit test dan integration test untuk memastikan kualitas kode.",
-      "Berkolaborasi dalam desain UI/UX dengan tim.",
-      "Meningkatkan performa dan aksesibilitas aplikasi.",
+      "Develop reusable UI components with React & TypeScript.",
+      "Implement WebSocket logic for real-time features.",
+      "Design and manage PostgreSQL database schema.",
+      "Write unit tests and integration tests to ensure code quality.",
+      "Collaborate on UI/UX design with the team.",
+      "Improve application performance and accessibility.",
     ],
   },
   skillset: {
@@ -59,20 +59,20 @@ const projectData = {
   tasks: [
     {
       id: "T-01",
-      title: "Buat Komponen Modal Login",
-      difficulty: "Mudah",
+      title: "Create Login Modal Component",
+      difficulty: "Easy",
       tags: ["Frontend", "UI"],
     },
     {
       id: "T-02",
-      title: "Optimalkan Query Database untuk Profil",
-      difficulty: "Menengah",
+      title: "Optimize Database Query for Profile",
+      difficulty: "Medium",
       tags: ["Backend", "Database"],
     },
     {
       id: "T-03",
-      title: "Implementasi Fitur Drag & Drop untuk Whiteboard",
-      difficulty: "Sulit",
+      title: "Implement Drag & Drop Feature for Whiteboard",
+      difficulty: "Hard",
       tags: ["Frontend", "Real-time"],
     },
   ],
@@ -81,40 +81,40 @@ const projectData = {
       id: "R-01",
       name: "Budi Santoso",
       rating: 5,
-      text: "Pengalaman luar biasa! Mentor sangat suportif dan saya belajar banyak tentang arsitektur perangkat lunak. Sangat direkomendasikan untuk membangun portofolio.",
+      text: "Amazing experience! The mentor is very supportive and I learned a lot about software architecture. Highly recommended for building your portfolio.",
       avatarUrl: "https://i.pravatar.cc/150?u=budi",
     },
     {
       id: "R-02",
       name: "Citra Lestari",
       rating: 5,
-      text: "Proyek yang sangat relevan dengan industri. Saya bisa langsung menerapkan apa yang saya pelajari di pekerjaan. Timnya juga sangat kolaboratif.",
+      text: "A project very relevant to the industry. I could immediately apply what I learned at work. The team is also very collaborative.",
       avatarUrl: "https://i.pravatar.cc/150?u=citra",
     },
   ],
   faqs: [
     {
-      question: "Skill apa yang paling dibutuhkan?",
+      question: "What skills are most needed?",
       answer:
-        "Kami sangat membutuhkan pengalaman di React dan TypeScript. Jika Anda memiliki keahlian dalam optimasi performa atau WebSockets, itu akan menjadi nilai tambah yang besar.",
+        "We really need experience in React and TypeScript. If you have expertise in performance optimization or WebSockets, that would be a great added value.",
     },
     {
-      question: "Bagaimana proses seleksi proposal?",
+      question: "How is the proposal selection process?",
       answer:
-        "Mentor akan mereview setiap proposal yang masuk. Kami akan melihat portofolio Anda, terutama proyek-proyek yang relevan. Kandidat yang terpilih akan dihubungi melalui email untuk diskusi lebih lanjut.",
+        "The mentor will review every incoming proposal. We will look at your portfolio, especially relevant projects. Selected candidates will be contacted via email for further discussion.",
     },
   ],
   relatedProjects: [
     {
       id: "P-02",
-      title: "Aplikasi Manajemen Tugas Kanban",
+      title: "Kanban Task Management App",
       category: "Productivity",
       imageUrl:
         "https://picsum.photos/300/200?random=19",
     },
     {
       id: "P-03",
-      title: "Platform E-learning Interaktif",
+      title: "Interactive E-learning Platform",
       category: "Education",
       imageUrl:
         "https://picsum.photos/300/200?random=20",
@@ -125,13 +125,13 @@ const projectData = {
 const roadmapData = [
   {
     id: 1,
-    title: "Dasar Pemrograman Web",
+    title: "Web Programming Basics",
     totalHours: 20,
     status: "completed",
     courses: [
-      { id: "c1", title: "HTML & CSS Fundamental" },
-      { id: "c2", title: "JavaScript Dasar" },
-      { id: "c3", title: "Git Fundamental" },
+      { id: "c1", title: "HTML & CSS Fundamentals" },
+      { id: "c2", title: "JavaScript Basics" },
+      { id: "c3", title: "Git Fundamentals" },
     ],
   },
   {
@@ -140,7 +140,7 @@ const roadmapData = [
     totalHours: 40,
     status: "in_progress",
     courses: [
-      { id: "c4", title: "React Fundamental" },
+      { id: "c4", title: "React Fundamentals" },
       { id: "c5", title: "State Management" },
       { id: "c6", title: "API Integration" },
     ],
@@ -151,7 +151,7 @@ const roadmapData = [
     totalHours: 35,
     status: "pending",
     courses: [
-      { id: "c7", title: "Node.js Fundamental" },
+      { id: "c7", title: "Node.js Fundamentals" },
       { id: "c8", title: "RESTful API" },
       { id: "c9", title: "Database Design" },
     ],
@@ -179,7 +179,7 @@ const statusStyles = {
   },
 };
 
-// --- Komponen-komponen Kecil untuk Kebersihan Kode ---
+// --- Small Components for Code Cleanliness ---
 const FaqItem = ({ faq }: { faq: { question: string; answer: string } }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -236,7 +236,7 @@ const ReviewCard = ({
   );
 };
 
-// --- Komponen Utama Halaman ---
+// --- Main Page Component ---
 const ProjectDetailPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -261,8 +261,8 @@ const ProjectDetailPage: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // // Simulasi pengiriman data ke API
-      // // Ganti dengan endpoint API Anda yang sebenarnya
+      // // Simulate sending data to API
+      // // Replace with your actual API endpoint
       // const response = await fetch(`/api/projects/${projectData.id}/apply`, {
       //   method: 'POST',
       //   headers: {
@@ -273,13 +273,13 @@ const ProjectDetailPage: React.FC = () => {
 
       // console.log(response)
 
-      // Simulasi respons dari server
+      // Simulate server response
       if (Math.random() < 0.1) { // 10% chance of failure for simulation
-         throw new Error('Gagal mengirim proposal. Coba lagi nanti.');
+         throw new Error('Failed to send proposal. Please try again later.');
       }
 
-      // Jika berhasil
-      alert('Proposal berhasil dikirim! Anda akan menerima notifikasi jika ada pembaruan.');
+      // If successful
+      alert('Proposal sent successfully! You will receive a notification if there are any updates.');
       setIsModalOpen(false);
 
     } catch (error) {
@@ -327,20 +327,20 @@ const ProjectDetailPage: React.FC = () => {
                     <Star size={16} className="mr-1.5 text-yellow-400" />
                     <span>
                       <b>{projectData.stats.rating}</b> (
-                      {projectData.stats.reviewCount} ulasan)
+                      {projectData.stats.reviewCount} reviews)
                     </span>
                   </div>
                   <div className="flex items-center">
                     <Users size={16} className="mr-1.5" />
-                    <span>{projectData.stats.contributors} Kontributor</span>
+                    <span>{projectData.stats.contributors} Contributors</span>
                   </div>
                   <div className="flex items-center">
                     <Clock size={16} className="mr-1.5" />
-                    <span>{projectData.stats.totalHours} jam total</span>
+                    <span>{projectData.stats.totalHours} total hours</span>
                   </div>
                   <div className="flex items-center">
                     <Award size={16} className="mr-1.5" />
-                    <span>Sertifikat Kontribusi</span>
+                    <span>Contribution Certificate</span>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -367,20 +367,20 @@ const ProjectDetailPage: React.FC = () => {
                   />
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-800 mb-4">
-                      Siap Berkontribusi?
+                      Ready to Contribute?
                     </h3>
                     <button
                       onClick={() => setIsModalOpen(true)}
                       className="w-full bg-[#584DFF] text-white font-bold py-3 px-5 rounded-lg hover:bg-opacity-90 transition-all duration-200 shadow-md hover:shadow-lg mb-4"
                     >
-                      Ajukan Proposal
+                      Submit Proposal
                     </button>
                     <div className="flex justify-between text-sm">
                       <button className="flex items-center font-semibold text-gray-600 hover:text-[#584DFF] transition-colors">
                         <Heart size={16} className="mr-2" /> Wishlist
                       </button>
                       <button className="flex items-center font-semibold text-gray-600 hover:text-[#584DFF] transition-colors">
-                        <Share2 size={16} className="mr-2" /> Bagikan
+                        <Share2 size={16} className="mr-2" /> Share
                       </button>
                     </div>
                   </div>
@@ -407,7 +407,7 @@ const ProjectDetailPage: React.FC = () => {
                   {activeTab === "overview" && (
                     <div>
                       <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                        Deskripsi Proyek
+                        Project Description
                       </h2>
                       <div
                         className="prose prose-sm max-w-none text-gray-600"
@@ -416,7 +416,7 @@ const ProjectDetailPage: React.FC = () => {
                         }}
                       ></div>
                       <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">
-                        Apa yang akan Anda kerjakan:
+                        What you will work on:
                       </h3>
                       <ul className="space-y-2">
                         {projectData.overview.whatYoullDo.map((item) => (
@@ -434,10 +434,10 @@ const ProjectDetailPage: React.FC = () => {
                   {activeTab === "skillset" && (
                     <div>
                       <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                        Skillset yang Dibutuhkan
+                        Required Skillset
                       </h2>
                       <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                        Wajib Dikuasai
+                        Required
                       </h3>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {projectData.skillset.required.map((skill) => (
@@ -450,7 +450,7 @@ const ProjectDetailPage: React.FC = () => {
                         ))}
                       </div>
                       <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                        Direkomendasikan
+                        Recommended
                       </h3>
                       <div className="flex flex-wrap gap-2 mb-8">
                         {projectData.skillset.recommended.map((skill) => (
@@ -463,7 +463,7 @@ const ProjectDetailPage: React.FC = () => {
                         ))}
                       </div>
                       <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                        Contoh Tugas Awal
+                        Sample Initial Tasks
                       </h2>
                       <div>
                         {projectData.tasks.map((task) => (
@@ -480,9 +480,9 @@ const ProjectDetailPage: React.FC = () => {
                             </div>
                             <span
                               className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                                task.difficulty === "Mudah"
+                                task.difficulty === "Easy"
                                   ? "bg-green-100 text-green-800"
-                                  : task.difficulty === "Menengah"
+                                  : task.difficulty === "Medium"
                                   ? "bg-yellow-100 text-yellow-800"
                                   : "bg-red-100 text-red-800"
                               }`}
@@ -497,7 +497,7 @@ const ProjectDetailPage: React.FC = () => {
                   {activeTab === "instructor" && (
                     <div>
                       <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                        Tentang Instructor
+                        About the Instructor
                       </h2>
                       <div className="flex items-center space-x-6">
                         <img
@@ -522,7 +522,7 @@ const ProjectDetailPage: React.FC = () => {
                   {activeTab === "reviews" && (
                     <div>
                       <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                        Ulasan Kontributor
+                        Contributor Reviews
                       </h2>
                       {projectData.reviews.map((review) => (
                         <ReviewCard key={review.id} review={review} />
@@ -532,7 +532,7 @@ const ProjectDetailPage: React.FC = () => {
                   {activeTab === "faq" && (
                     <div>
                       <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                        Pertanyaan Umum
+                        Frequently Asked Questions
                       </h2>
                       {projectData.faqs.map((faq, index) => (
                         <FaqItem key={index} faq={faq} />
@@ -547,7 +547,7 @@ const ProjectDetailPage: React.FC = () => {
               <div className="sticky top-8">
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
                   <h3 className="text-xl font-bold text-gray-800 mb-4">
-                    Proyek Terkait
+                    Related Projects
                   </h3>
                   <div className="space-y-4">
                     {projectData.relatedProjects.map((p) => (
@@ -574,7 +574,7 @@ const ProjectDetailPage: React.FC = () => {
 
           <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 mt-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Roadmap Belajar yang Direkomendasikan
+              Recommended Learning Roadmap
             </h2>
             <div className="space-y-6">
               {roadmapData.map((section) => {
@@ -592,7 +592,7 @@ const ProjectDetailPage: React.FC = () => {
                           {section.title}
                         </h3>
                         <span className="text-sm text-gray-500 font-medium">
-                          {section.totalHours} jam
+                          {section.totalHours} hours
                         </span>
                       </div>
                       <div
@@ -623,10 +623,10 @@ const ProjectDetailPage: React.FC = () => {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-[#584DFF] bg-opacity-60 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg">
             <div className="flex justify-between items-center p-5 border-b">
-              <h2 className="text-xl font-bold">Formulir Pengajuan Proposal</h2>
+              <h2 className="text-xl font-bold">Proposal Submission Form</h2>
               <button onClick={() => setIsModalOpen(false)}>
                 <X size={24} />
               </button>
@@ -637,7 +637,7 @@ const ProjectDetailPage: React.FC = () => {
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Nama Lengkap
+                  Full Name
                 </label>
                 <input
                   type="text"
@@ -653,7 +653,7 @@ const ProjectDetailPage: React.FC = () => {
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Alamat Email
+                  Email Address
                 </label>
                 <input
                   type="email"
@@ -669,7 +669,7 @@ const ProjectDetailPage: React.FC = () => {
                   htmlFor="portfolioUrl"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Link Portofolio / GitHub
+                  Portfolio / GitHub Link
                 </label>
                 <input
                   type="url"
@@ -685,7 +685,7 @@ const ProjectDetailPage: React.FC = () => {
                   htmlFor="message"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Mengapa Anda Tertarik?
+                  Why Are You Interested?
                 </label>
                 <textarea
                   name="message"
@@ -703,7 +703,7 @@ const ProjectDetailPage: React.FC = () => {
                   className="bg-[#584DFF] text-white font-bold py-2.5 px-6 rounded-lg flex items-center disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
                   <Mail size={18} className="mr-2" />
-                  {isSubmitting ? 'Mengirim...' : 'Kirim Proposal'}
+                  {isSubmitting ? 'Sending...' : 'Send Proposal'}
                 </button>
               </div>
             </form>

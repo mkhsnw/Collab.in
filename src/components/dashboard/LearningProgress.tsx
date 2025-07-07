@@ -30,7 +30,7 @@ export const LearningProgress: React.FC<LearningProgressProps> = ({
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-5 border-b border-gray-200">
         <h2 className="text-lg font-semibold text-gray-800">
-          Progress Belajar
+          Learning Progress
         </h2>
       </div>
       {featuredRoadmap && (
@@ -60,7 +60,7 @@ export const LearningProgress: React.FC<LearningProgressProps> = ({
               {featuredRoadmap.nextLesson && (
                 <div className="mt-4 bg-gray-50 rounded-lg p-3 border border-gray-100">
                   <p className="text-sm font-medium text-gray-700">
-                    Pelajaran selanjutnya:
+                    Next lesson:
                   </p>
                   <div className="flex items-center justify-between mt-1">
                     <div className="flex items-center">
@@ -84,7 +84,7 @@ export const LearningProgress: React.FC<LearningProgressProps> = ({
                   navigate(`/video/${featuredRoadmap.id}`);
                 }}
               >
-                Lanjutkan Belajar
+                Continue Learning
               </button>
             </div>
           </div>
@@ -92,7 +92,7 @@ export const LearningProgress: React.FC<LearningProgressProps> = ({
       )}
       <div className="p-5">
         <h3 className="text-sm font-medium text-gray-700 mb-3">
-          Roadmap Lainnya
+          Other Roadmaps
         </h3>
         <div className="space-y-3">
           {roadmaps.slice(1, 3).map((roadmap) => (
@@ -130,7 +130,7 @@ export const LearningProgress: React.FC<LearningProgressProps> = ({
                   );
                 }}
               >
-                {roadmap.status === "completed" ? "Lihat" : "Lanjutkan"}
+                {roadmap.status === "completed" ? "See" : "Continue"}
               </button>
             </div>
           ))}

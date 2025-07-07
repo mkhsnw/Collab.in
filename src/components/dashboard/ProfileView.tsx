@@ -7,7 +7,7 @@ import { userData } from "../../data/dashboardData";
 export const ProfileView: React.FC = () => {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Profil Saya</h1>
+      <h1 className="text-2xl font-bold text-gray-800">My Profile</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left column - Basic Info and Skills */}
         <div className="lg:col-span-1 space-y-6">

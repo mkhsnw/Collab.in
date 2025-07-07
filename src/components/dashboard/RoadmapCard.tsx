@@ -47,14 +47,15 @@ export const RoadmapCard: React.FC<RoadmapCardProps> = ({ roadmap }) => {
           <h3 className="font-medium text-gray-800">{roadmap.title}</h3>
           {isCompleted && (
             <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
-              Selesai
+              Finish
             </span>
           )}
         </div>
         <div className="flex items-center text-sm text-gray-500 mb-3">
           <BookOpenIcon size={14} className="mr-1" />
           <span>
-            {roadmap.completedModules} dari {roadmap.totalModules} modul selesai
+            {roadmap.completedModules} dari {roadmap.totalModules} modul
+            Finished
           </span>
         </div>
         <div className="mb-3">
@@ -96,14 +97,14 @@ export const RoadmapCard: React.FC<RoadmapCardProps> = ({ roadmap }) => {
             className="w-full bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
             onClick={() => navigate(`/portfolio/${roadmap.id}`)}
           >
-            Lihat Sertifikat
+            View Certificate
           </button>
         ) : (
           <button
             className="w-full bg-[#504DFF] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#403DC9] transition-colors"
             onClick={() => navigate(`/video/${roadmap.id}`)}
           >
-            Lanjutkan
+            Continue
           </button>
         )}
       </div>

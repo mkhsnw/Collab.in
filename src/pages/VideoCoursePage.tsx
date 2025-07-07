@@ -153,7 +153,7 @@ const VideoCoursePage: React.FC = () => {
 
   // --- BARU: Fungsi untuk navigasi ke halaman portofolio ---
   const handleNavigateToPortfolio = () => {
-    navigate(`/portfolio/${currentLesson.id}`); // Arahkan ke route '/portfolio'
+    navigate(`/portfolio`); // Arahkan ke route '/portfolio'
   };
 
   return (
@@ -216,13 +216,13 @@ const VideoCoursePage: React.FC = () => {
               </h3>
               <div className="flex space-x-4">
                 <button className="px-5 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition">
-                  Tanyakan di Forum
+                  Ask Forum
                 </button>
                 <button
                   onClick={markLessonAsComplete}
                   className="px-5 py-2 bg-[#584DFF] text-white rounded-lg hover:bg-blue-700 transition"
                 >
-                  Ya, Saya Sudah Paham
+                  Understand
                 </button>
                 {/* --- BARU: Tombol Sertifikat (Tampil Kondisional) --- */}
                 {isCourseComplete && (
@@ -230,7 +230,7 @@ const VideoCoursePage: React.FC = () => {
                     onClick={handleNavigateToPortfolio}
                     className="px-5 py-2 bg-[#504DFF] text-white font-bold rounded-lg hover:bg-blue-600  transition-all duration-200 ease-in-out text-center shadow-lg"
                   >
-                    🎉 Lihat Sertifikat Anda!
+                    View Certificate
                   </button>
                 )}
               </div>

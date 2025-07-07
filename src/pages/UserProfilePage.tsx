@@ -13,9 +13,9 @@ import {
 import { Footer, Header } from "../components/common";
 import { currentUser } from "../data/dashboardData";
 
-// --- DATA DUMMY UNTUK PROFIL PENGGUNA ---
+// --- DUMMY DATA FOR USER PROFILE ---
 const userProfileData = {
-  isOwnProfile: true, // Ganti jadi 'false' untuk melihat tampilan profil orang lain
+  isOwnProfile: true, // Change to 'false' to see other user's profile view
   name: "Nawawi",
   username: "nawawi_dev",
   avatarUrl: "https://i.pravatar.cc/150?u=nawawi",
@@ -23,7 +23,7 @@ const userProfileData = {
     "https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=2070&auto=format&fit=crop",
   title: "Full-Stack Developer & Open-Source Contributor",
   joinDate: "2024-01-15T10:00:00Z",
-  bio: "Pengembang perangkat lunak dengan hasrat untuk membangun aplikasi web yang bersih, efisien, dan bermanfaat. Fokus pada ekosistem JavaScript, terutama React dan Node.js.",
+  bio: "Software developer with a passion for building clean, efficient, and useful web applications. Focused on JavaScript ecosystem, especially React and Node.js.",
   skills: [
     "React",
     "TypeScript",
@@ -41,14 +41,14 @@ const userProfileData = {
   contributions: [
     {
       id: "proj-001",
-      title: "Collab.in - Platform Kolaborasi",
+      title: "Collab.in - Collaboration Platform",
       imageUrl:
         "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80",
       role: "Lead Frontend",
     },
     {
       id: "proj-004",
-      title: "Portofolio Generator Otomatis",
+      title: "Automated Portfolio Generator",
       imageUrl:
         "https://images.unsplash.com/photo-1542626991-a2f575a7e6a8?q=80",
       role: "Contributor",
@@ -66,7 +66,7 @@ const userProfileData = {
     {
       id: "act-1",
       type: "complete_course",
-      title: "Dasar Pemrograman Web",
+      title: "Web Programming Basics",
       date: "2025-06-25T10:00:00Z",
     },
     {
@@ -78,7 +78,7 @@ const userProfileData = {
     {
       id: "act-3",
       type: "new_discussion",
-      title: "Bagaimana handle error async?",
+      title: "How to handle async errors?",
       date: "2025-06-23T09:00:00Z",
     },
   ],
@@ -90,7 +90,7 @@ const activityIcons = {
   new_discussion: <MessageSquare className="text-orange-500" size={20} />,
 };
 
-// --- Komponen Utama Halaman Profil ---
+// --- Main Profile Page Component ---
 const UserProfilePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("contributions");
   const navigate = useNavigate();
@@ -120,7 +120,7 @@ const UserProfilePage: React.FC = () => {
       <Header currentUser={currentUser} />
 
       <main className="container mx-auto px-4 lg:px-8 py-10">
-        {/* --- HEADER PROFIL (COVER & AVATAR) --- */}
+        {/* --- PROFILE HEADER (COVER & AVATAR) --- */}
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 mb-8">
           <div
             className="h-48 rounded-t-xl bg-cover bg-center"
@@ -145,7 +145,7 @@ const UserProfilePage: React.FC = () => {
                     to="/profile/edit"
                     className="bg-[#584DFF] text-white font-bold py-2 px-5 rounded-lg hover:bg-opacity-90 transition flex items-center"
                   >
-                    <Edit size={16} className="mr-2" /> Edit Profil
+                    <Edit size={16} className="mr-2" /> Edit Profile
                   </Link>
                 ) : (
                   <button className="bg-gray-200 text-gray-800 font-bold py-2 px-5 rounded-lg hover:bg-gray-300 transition flex items-center">
@@ -157,7 +157,7 @@ const UserProfilePage: React.FC = () => {
           </div>
         </div>
 
-        {/* --- BAGIAN STATISTIK --- */}
+        {/* --- STATISTICS SECTION --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
             <div className="bg-blue-100 p-3 rounded-full">
@@ -167,7 +167,7 @@ const UserProfilePage: React.FC = () => {
               <p className="text-2xl font-bold text-gray-900">
                 {userProfileData.stats.projects}
               </p>
-              <p className="text-sm text-gray-500">Proyek & Kontribusi</p>
+              <p className="text-sm text-gray-500">Projects & Contributions</p>
             </div>
           </div>
           <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
@@ -178,7 +178,7 @@ const UserProfilePage: React.FC = () => {
               <p className="text-2xl font-bold text-gray-900">
                 {userProfileData.stats.courses}
               </p>
-              <p className="text-sm text-gray-500">Kursus Selesai</p>
+              <p className="text-sm text-gray-500">Courses Completed</p>
             </div>
           </div>
           <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
@@ -189,18 +189,18 @@ const UserProfilePage: React.FC = () => {
               <p className="text-2xl font-bold text-gray-900">
                 {userProfileData.stats.discussions}
               </p>
-              <p className="text-sm text-gray-500">Diskusi Forum</p>
+              <p className="text-sm text-gray-500">Forum Discussions</p>
             </div>
           </div>
         </div>
 
-        {/* --- LAYOUT DUA KOLOM --- */}
+        {/* --- TWO COLUMN LAYOUT --- */}
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* --- SIDEBAR KIRI --- */}
+          {/* --- LEFT SIDEBAR --- */}
           <aside className="lg:col-span-1">
             <div className="sticky top-8 space-y-8">
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <h3 className="font-bold text-lg mb-4">Tentang Saya</h3>
+                <h3 className="font-bold text-lg mb-4">About Me</h3>
                 <p className="text-gray-600 text-sm mb-4">
                   {userProfileData.bio}
                 </p>
@@ -212,9 +212,9 @@ const UserProfilePage: React.FC = () => {
                   <div className="flex items-center">
                     <Clock size={16} className="mr-3" />
                     <span>
-                      Bergabung sejak{" "}
+                      Joined{" "}
                       {new Date(userProfileData.joinDate).toLocaleDateString(
-                        "id-ID",
+                        "en-US",
                         { year: "numeric", month: "long" }
                       )}
                     </span>
@@ -222,7 +222,7 @@ const UserProfilePage: React.FC = () => {
                 </div>
               </div>
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <h3 className="font-bold text-lg mb-4">Keahlian</h3>
+                <h3 className="font-bold text-lg mb-4">Skills</h3>
                 <div className="flex flex-wrap gap-2">
                   {userProfileData.skills.map((skill) => (
                     <span
@@ -237,24 +237,24 @@ const UserProfilePage: React.FC = () => {
             </div>
           </aside>
 
-          {/* --- KONTEN UTAMA KANAN --- */}
+          {/* --- MAIN RIGHT CONTENT --- */}
           <div className="lg:col-span-2">
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
               <div className="border-b border-gray-200 mb-6">
                 <div className="flex space-x-2 md:space-x-4">
                   <TabButton
                     id="contributions"
-                    label={`Kontribusi (${userProfileData.contributions.length})`}
+                    label={`Contributions (${userProfileData.contributions.length})`}
                   />
-                  <TabButton id="activity" label="Aktivitas" />
+                  <TabButton id="activity" label="Activity" />
                   <TabButton
                     id="certificates"
-                    label={`Sertifikat (${userProfileData.certificates.length})`}
+                    label={`Certificates (${userProfileData.certificates.length})`}
                   />
                 </div>
               </div>
 
-              {/* Konten Tab */}
+              {/* Tab Content */}
               <div>
                 {activeTab === "contributions" && (
                   <div>
@@ -287,7 +287,7 @@ const UserProfilePage: React.FC = () => {
                         ))}
                       </div>
                     ) : (
-                      <EmptyState message="Pengguna ini belum memiliki kontribusi." />
+                      <EmptyState message="This user doesn't have any contributions yet." />
                     )}
                   </div>
                 )}
@@ -308,20 +308,20 @@ const UserProfilePage: React.FC = () => {
                               }
                             </div>
                             <p className="text-sm text-gray-700">
-                              Anda telah{" "}
+                              You have{" "}
                               <span className="font-semibold">
                                 {act.type.replace("_", " ")}
                               </span>{" "}
                               "{act.title}"
                             </p>
                             <p className="ml-auto text-xs text-gray-400">
-                              {new Date(act.date).toLocaleDateString("id-ID")}
+                              {new Date(act.date).toLocaleDateString("en-US")}
                             </p>
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <EmptyState message="Tidak ada aktivitas terbaru untuk ditampilkan." />
+                      <EmptyState message="No recent activity to display." />
                     )}
                   </div>
                 )}
@@ -340,14 +340,14 @@ const UserProfilePage: React.FC = () => {
                             <div>
                               <h4 className="font-bold">{cert.title}</h4>
                               <p className="text-sm text-gray-500">
-                                Diterbitkan oleh {cert.issuer}
+                                Issued by {cert.issuer}
                               </p>
                             </div>
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <EmptyState message="Pengguna ini belum memiliki sertifikat." />
+                      <EmptyState message="This user doesn't have any certificates yet." />
                     )}
                   </div>
                 )}

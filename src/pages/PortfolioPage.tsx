@@ -135,7 +135,7 @@ const PortfolioPage: React.FC = () => {
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Portfolio Saya
+            My Portfolio
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Showcase your achievements, projects, and certificates to stand out
@@ -153,14 +153,13 @@ const PortfolioPage: React.FC = () => {
               <div>
                 <h2 className="text-2xl font-bold text-gray-800">Portfolio</h2>
                 <p className="text-gray-500 mt-1">
-                  Tampilkan Hasil dan Pencapaianmu disini.
+                  Show your results and achievements here.
                 </p>
               </div>
             </div>
 
             <p className="text-gray-600 mb-6">
-              Tambahkan Proyek atau Keterampilan untuk menarik perhatian
-              recruiter
+              Add Projects or Skills to attract recruiters' attention.
             </p>
 
             {/* Existing Projects */}
@@ -223,13 +222,13 @@ const PortfolioPage: React.FC = () => {
 
             {/* Add Project Section */}
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="font-bold text-gray-800 mb-2">Proyek</h3>
+              <h3 className="font-bold text-gray-800 mb-2">Project</h3>
               <p className="text-sm text-gray-600 mb-4">
-                Karyamu atau Studi Kasus Yang Pernah Kamu Buat
+                Work or case studies you have created
               </p>
-              <button className="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center">
+              <button className="w-full bg-[#504DFF] text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center">
                 <Plus className="w-5 h-5 mr-2" />
-                Tambahkan Proyek
+                Add Project
               </button>
             </div>
           </div>
@@ -243,13 +242,13 @@ const PortfolioPage: React.FC = () => {
               <div>
                 <h2 className="text-2xl font-bold text-gray-800">Sertifikat</h2>
                 <p className="text-gray-500 mt-1">
-                  Selamat, kamu telah menyelesaikan kelas!
+                  Congratulations, you have completed the class!
                 </p>
               </div>
             </div>
 
             <p className="text-gray-600 mb-6">
-              Gunakan sertifikat ini untuk mengembangkan karirmu.
+              Use this certificate to advance your career.
             </p>
 
             {/* Certificate List */}
@@ -323,17 +322,17 @@ const PortfolioPage: React.FC = () => {
                     <div className="flex space-x-2 mt-4">
                       <button
                         onClick={() => handleDownloadCertificate(certificate)}
-                        className="flex-1 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center text-sm"
+                        className="flex-1 bg-[#504DFF] text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center text-sm"
                       >
                         <Download className="w-4 h-4 mr-2" />
-                        Unduh
+                        Donwload
                       </button>
                       <button
                         onClick={() => handleShareCertificate(certificate)}
                         className="flex-1 bg-gray-100 text-gray-700 font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition-all flex items-center justify-center text-sm"
                       >
                         <Share2 className="w-4 h-4 mr-2" />
-                        Bagikan
+                        Share
                       </button>
                     </div>
                   </div>
@@ -344,16 +343,16 @@ const PortfolioPage: React.FC = () => {
             {/* Continue Learning CTA */}
             <div className="mt-8 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
               <h3 className="font-semibold text-gray-800 mb-2">
-                Lanjutkan Belajar
+                Continue Learning
               </h3>
               <p className="text-sm text-gray-600 mb-3">
-                Raih lebih banyak sertifikat dengan mengikuti kursus lainnya
+                Earn more certificates by taking other courses
               </p>
               <button
                 onClick={() => navigate("/courses")}
-                className="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm"
+                className="w-full bg-[#504DFF] text-white font-semibold py-2 px-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm"
               >
-                Jelajahi Kursus Lainnya
+                Explore other courses
               </button>
             </div>
           </div>

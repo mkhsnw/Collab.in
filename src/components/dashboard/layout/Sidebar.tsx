@@ -30,12 +30,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
     },
     {
       id: "profile",
-      label: "Profil Saya",
+      label: "My Profile",
       icon: <UserIcon />,
     },
     {
       id: "roadmaps",
-      label: "Jalur Belajar",
+      label: "Learning Path",
       icon: <MapIcon />,
     },
   ];
@@ -80,7 +80,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           onClick={() => navigate("/home")}
         >
           <ArrowLeftOnRectangleIcon className="text-gray-500 size-6" />
-          <span className="ml-3">Keluar</span>
+          <span className="ml-3">Exit</span>
         </button>
       </div>
     </div>

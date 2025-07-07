@@ -148,7 +148,7 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
                         className="w-full text-left flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#584DFF]"
                       >
                         <UserIcon className="w-4 h-4 mr-3" />
-                        Profil Saya
+                        My Profile
                       </button>
                       <div className="border-t my-2"></div>
                       <button

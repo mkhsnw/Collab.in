@@ -52,12 +52,12 @@ const NewForumPage: React.FC = () => {
             className="flex items-center text-sm text-gray-600 hover:text-gray-900 mb-6"
           >
             <ArrowLeftIcon className="w-4 h-4 mr-2" />
-            Kembali ke Forum
+            Back to All Discussions
           </button>
 
           <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">
-              Buat Diskusi Baru
+              Create a New Discussion
             </h1>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -65,14 +65,14 @@ const NewForumPage: React.FC = () => {
                   htmlFor="title"
                   className="block text-sm font-semibold text-gray-700 mb-1"
                 >
-                  Judul Diskusi
+                  Discussion Title
                 </label>
                 <input
                   type="text"
                   id="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Contoh: Bagaimana cara menggunakan Git?"
+                  placeholder="Example: How to use Git?"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#584DFF] focus:border-transparent transition"
                   required
                 />
@@ -82,14 +82,14 @@ const NewForumPage: React.FC = () => {
                   htmlFor="content"
                   className="block text-sm font-semibold text-gray-700 mb-1"
                 >
-                  Isi Pertanyaan
+                  Fill in the Question
                 </label>
                 <textarea
                   id="content"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   rows={8}
-                  placeholder="Jelaskan pertanyaan Anda secara detail di sini..."
+                  placeholder="Explain your question in detail here..."
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#584DFF] focus:border-transparent transition"
                   required
                 ></textarea>
@@ -99,7 +99,7 @@ const NewForumPage: React.FC = () => {
                   htmlFor="tags"
                   className="block text-sm font-semibold text-gray-700 mb-1"
                 >
-                  Kata Kunci (Tags)
+                  Tags
                 </label>
                 <div className="relative">
                   <TagIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -108,7 +108,7 @@ const NewForumPage: React.FC = () => {
                     id="tags"
                     value={tags}
                     onChange={(e) => setTags(e.target.value)}
-                    placeholder="Contoh: git, python, javascript (pisahkan dengan koma)"
+                    placeholder="Example: git, python, javascript (separate with commas)"
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#584DFF] focus:border-transparent transition"
                   />
                 </div>
@@ -118,7 +118,7 @@ const NewForumPage: React.FC = () => {
                   type="submit"
                   className="bg-[#584DFF] text-white font-bold py-2.5 px-6 rounded-lg hover:bg-opacity-90 transition"
                 >
-                  Kirim Diskusi
+                  Submit
                 </button>
               </div>
             </form>

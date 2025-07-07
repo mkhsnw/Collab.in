@@ -14,7 +14,7 @@ export const RoadmapsView: React.FC = () => {
         );
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Jalur Belajar Saya</h1>
+      <h1 className="text-2xl font-bold text-gray-800">My Learning Path</h1>
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="p-5 border-b border-gray-200">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
@@ -27,7 +27,7 @@ export const RoadmapsView: React.FC = () => {
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
-                Semua
+                All
               </button>
               <button
                 onClick={() => setActiveTab("in-progress")}
@@ -37,7 +37,7 @@ export const RoadmapsView: React.FC = () => {
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
-                Sedang Berjalan
+                Learning
               </button>
               <button
                 onClick={() => setActiveTab("completed")}
@@ -47,14 +47,14 @@ export const RoadmapsView: React.FC = () => {
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
-                Selesai
+                Finish
               </button>
             </div>
             <div className="mt-4 sm:mt-0 flex items-center">
               <div className="relative mr-2">
                 <input
                   type="text"
-                  placeholder="Cari roadmap..."
+                  placeholder="Search Roadmaps..."
                   className="bg-gray-100 pl-8 pr-4 py-1.5 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-[#504DFF] w-full sm:w-48"
                 />
                 <SearchIcon

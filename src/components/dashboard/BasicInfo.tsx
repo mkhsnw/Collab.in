@@ -14,7 +14,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({
 }) => {
   return <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-5 border-b border-gray-200 flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-gray-800">Info Dasar</h2>
+        <h2 className="text-lg font-semibold text-gray-800">Basic Info</h2>
         <button className="text-gray-500 hover:text-gray-700">
           <PencilIcon size={18} />
         </button>
@@ -35,7 +35,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({
           </div>
           <p className="mt-3 text-sm text-gray-600 text-center">{user.bio}</p>
           <button className="mt-5 w-full bg-[#504DFF] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#403DC9] transition-colors">
-            Edit Profil
+            Edit Profile
           </button>
         </div>
       </div>

@@ -38,7 +38,7 @@ export const SkillsList: React.FC<SkillsListProps> = ({
             </div>)}
         </div>
         <button className="mt-5 w-full border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
-          Tambah Skill
+          Add Skill
         </button>
       </div>
     </div>;

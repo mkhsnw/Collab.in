@@ -21,10 +21,10 @@ export const ProjectRecommendations: React.FC<ProjectRecommendationsProps> = ({
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-5 border-b border-gray-200">
         <h2 className="text-lg font-semibold text-gray-800">
-          Rekomendasi Proyek
+          Project Recommendations
         </h2>
         <p className="text-sm text-gray-500 mt-1">
-          Berdasarkan skill yang telah kamu kuasai
+          Based on the skills that you have mastered
         </p>
       </div>
       <div className="p-5">
@@ -74,7 +74,7 @@ export const ProjectRecommendations: React.FC<ProjectRecommendationsProps> = ({
                   className="mt-3 w-full bg-white border border-[#504DFF] text-[#504DFF] px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-[#504DFF]/5 transition-colors"
                   onClick={() => navigate(`/project/${project.id}`)}
                 >
-                  Lihat Detail
+                  See Details
                 </button>
               </div>
             </div>
