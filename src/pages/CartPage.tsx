@@ -35,10 +35,10 @@ const CartPage: React.FC = () => {
   }, [cartItems]);
 
   const formatRupiah = (amount: number) => {
-    return new Intl.NumberFormat("id-ID", {
+    return new Intl.NumberFormat("en-HOSSDDG", {
       style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
+      currency: "USD",
+      minimumFractionDigits: 2,
     }).format(amount);
   };
 

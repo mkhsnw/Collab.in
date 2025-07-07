@@ -10,9 +10,9 @@ const allProjects = [
   {
     id: "proj-001",
     category: "Web Development",
-    title: "Collab.in - Platform Kolaborasi Real-time",
+    title: "Collab.in project - Real-time Collaboration Platform",
     shortDescription:
-      "Bangun platform kolaborasi open-source dari awal menggunakan tumpukan teknologi modern.",
+      "Build an open-source collaboration platform from scratch using modern technology stacks.",
     mentor: {
       name: "Dr. Arini Dewi",
       avatarUrl: "https://i.pravatar.cc/150?u=arini",
@@ -25,9 +25,9 @@ const allProjects = [
   {
     id: "proj-002",
     category: "Mobile Development",
-    title: "TaskFlow - Aplikasi Manajemen Tugas Mobile",
+    title: "TaskFlow - Mobile Task Management Application",
     shortDescription:
-      "Rancang dan kembangkan aplikasi to-do list lintas platform dengan React Native dan Firebase.",
+      "Design and develop a cross-platform to-do list application using React Native and Firebase.",
     mentor: {
       name: "Budi Santoso",
       avatarUrl: "https://i.pravatar.cc/150?u=budi",
@@ -40,9 +40,9 @@ const allProjects = [
   {
     id: "proj-003",
     category: "Data Science",
-    title: "Analisis Sentimen Media Sosial",
+    title: "Social Media Sentiment Analysis",
     shortDescription:
-      "Gunakan Python dan NLTK untuk menganalisis dan memvisualisasikan sentimen publik dari data Twitter.",
+      "Use Python and NLTK to analyze and visualize public sentiment from Twitter data.",
     mentor: {
       name: "Citra Lestari",
       avatarUrl: "https://i.pravatar.cc/150?u=citra",
@@ -51,36 +51,6 @@ const allProjects = [
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
     stats: { contributors: 8 },
     techStack: ["Python", "Pandas", "Matplotlib"],
-  },
-  {
-    id: "proj-004",
-    category: "Web Development",
-    title: "Portofolio Generator Otomatis",
-    shortDescription:
-      "Buat aplikasi web yang menghasilkan situs portofolio statis dari file JSON atau Markdown.",
-    mentor: {
-      name: "Eko Prasetyo",
-      avatarUrl: "https://i.pravatar.cc/150?u=eko",
-    },
-    imageUrl:
-      "https://images.unsplash.com/photo-1542626991-a2f575a7e6a8?q=80&w=2070",
-    stats: { contributors: 4 },
-    techStack: ["Next.js", "Tailwind CSS", "Vercel"],
-  },
-  {
-    id: "proj-005",
-    category: "Game Development",
-    title: "Space Invaders 2D Clone",
-    shortDescription:
-      "Belajar dasar-dasar pengembangan game dengan membuat ulang game klasik Space Invaders.",
-    mentor: {
-      name: "Rendy Affandy",
-      avatarUrl: "https://i.pravatar.cc/150?u=rendy",
-    },
-    imageUrl:
-      "https://images.unsplash.com/photo-1593305842399-522b2a47eee3?q=80&w=2070",
-    stats: { contributors: 2 },
-    techStack: ["Pygame", "Python"],
   },
 ];
 
@@ -113,7 +83,7 @@ const ProjectCard = ({ project }: { project: (typeof allProjects)[0] }) => {
         <div className="flex items-center text-sm text-gray-500 mb-4 border-t border-b border-gray-100 py-3">
           <div className="flex items-center mr-4">
             <Users size={16} className="mr-2" />
-            <span>{project.stats.contributors} Kontributor</span>
+            <span>{project.stats.contributors} Contributor</span>
           </div>
           <div className="flex items-center">
             <Code size={16} className="mr-2" />
@@ -138,7 +108,7 @@ const ProjectCard = ({ project }: { project: (typeof allProjects)[0] }) => {
           to={`/project/${project.id}`} // Arahkan ke halaman detail
           className="w-full mt-auto bg-[#584DFF] text-white font-bold py-2.5 px-5 text-center rounded-lg hover:bg-opacity-90 transition-all duration-200"
         >
-          Lihat Detail Proyek
+          See Project Detail
         </Link>
       </div>
     </div>
@@ -171,18 +141,17 @@ const ProjectListPage: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Header currentUser={currentUser} />
-
+      <div className="text-center bg-[#584DFF] p-30 mx-4 lg:mx-0">
+        <h1 className="text-4xl lg:text-5xl font-semibold text-white">
+          Explore Open Source Projects
+        </h1>
+        <p className="mt-4 text-lg text-white/90 max-w-2xl mx-auto">
+          Choose a project that suits your interests and skills, and start your
+          journey as a contributor.
+        </p>
+      </div>
       <main className="container mx-auto px-4 lg:px-8 py-12">
         {/* --- Hero Section --- */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900">
-            Temukan Proyek Open-Source
-          </h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            Pilih proyek yang sesuai dengan minat dan skill Anda, dan mulailah
-            perjalanan Anda sebagai kontributor.
-          </p>
-        </div>
 
         {/* --- Area Kontrol (Pencarian & Filter) --- */}
         <div className="mb-10 p-4 bg-white rounded-xl shadow-md border border-gray-200">

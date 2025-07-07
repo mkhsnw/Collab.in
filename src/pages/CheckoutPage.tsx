@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   LockClosedIcon,
-  BanknotesIcon,
-  WalletIcon,
+  BuildingLibraryIcon,
 } from "@heroicons/react/24/outline";
 import { Header } from "../components/common";
 import type { Course, User } from "../types";
@@ -23,6 +22,7 @@ const VisaIcon = () => (
     />
   </svg>
 );
+
 const MastercardIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +47,7 @@ const CheckoutPage: React.FC = () => {
   const [total, setTotal] = useState(0);
   const [selectedPaymentMethod, setSelectedPaymentMethod] =
     useState("credit_card");
+  const [selectedVirtualAccount, setSelectedVirtualAccount] = useState("bca");
 
   useEffect(() => {
     setCurrentUser(getCurrentUser());
@@ -62,11 +63,11 @@ const CheckoutPage: React.FC = () => {
   }, []);
 
   const formatRupiah = (amount: number) =>
-    new Intl.NumberFormat("id-ID", {
+    new Intl.NumberFormat("en-HOSSDDG", {
       style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(amount);
+      currency: "USD",
+      minimumFractionDigits: 2,
+    }).format(amount); // Convert USD to IDR approximation
 
   const handleCheckout = (e: React.FormEvent) => {
     e.preventDefault();
@@ -135,73 +136,122 @@ const CheckoutPage: React.FC = () => {
                   </div>
                 </div>
               </div>
+
               <div>
-                <h2 className="text-xl font-bold mb-4">Payment Method</h2>
-                <div className="space-y-3">
-                  <label
-                    className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
-                      selectedPaymentMethod === "credit_card"
-                        ? "border-[#584DFF] ring-2 ring-[#584DFF]"
-                        : "border-gray-300"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="credit_card"
-                      checked={selectedPaymentMethod === "credit_card"}
-                      onChange={() => setSelectedPaymentMethod("credit_card")}
-                      className="form-radio text-[#584DFF]"
-                    />
-                    <span className="ml-4 font-semibold">
-                      Credit / Debit Card
-                    </span>
-                    <div className="ml-auto flex items-center space-x-2">
+                <h2 className="text-xl font-bold mb-4">Payment Methods</h2>
+                <div className="space-y-4">
+                  {/* Credit/Debit Card */}
+                  <label className="flex items-center justify-between p-4 border border-gray-200 rounded-lg cursor-pointer hover:border-gray-300 transition-colors">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="credit_card"
+                        checked={selectedPaymentMethod === "credit_card"}
+                        onChange={() => setSelectedPaymentMethod("credit_card")}
+                        className="form-radio text-[#584DFF] mr-3"
+                      />
+                      <span className="font-medium text-gray-900">
+                        Credit/Debit Card
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-2">
                       <VisaIcon />
                       <MastercardIcon />
                     </div>
                   </label>
-                  <label
-                    className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
-                      selectedPaymentMethod === "bank_transfer"
-                        ? "border-[#584DFF] ring-2 ring-[#584DFF]"
-                        : "border-gray-300"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="bank_transfer"
-                      checked={selectedPaymentMethod === "bank_transfer"}
-                      onChange={() => setSelectedPaymentMethod("bank_transfer")}
-                      className="form-radio text-[#584DFF]"
-                    />
-                    <span className="ml-4 font-semibold">Bank Transfer</span>
-                    <BanknotesIcon className="w-6 h-6 ml-auto text-gray-500" />
+
+                  {/* Virtual Account */}
+                  <label className="flex items-center justify-between p-4 border border-gray-200 rounded-lg cursor-pointer hover:border-gray-300 transition-colors">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="virtual_account"
+                        checked={selectedPaymentMethod === "virtual_account"}
+                        onChange={() =>
+                          setSelectedPaymentMethod("virtual_account")
+                        }
+                        className="form-radio text-[#584DFF] mr-3"
+                      />
+                      <span className="font-medium text-gray-900">
+                        Virtual Account
+                      </span>
+                    </div>
+                    <BuildingLibraryIcon className="w-6 h-6 text-gray-400" />
                   </label>
-                  <label
-                    className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
-                      selectedPaymentMethod === "e_wallet"
-                        ? "border-[#584DFF] ring-2 ring-[#584DFF]"
-                        : "border-gray-300"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="e_wallet"
-                      checked={selectedPaymentMethod === "e_wallet"}
-                      onChange={() => setSelectedPaymentMethod("e_wallet")}
-                      className="form-radio text-[#584DFF]"
-                    />
-                    <span className="ml-4 font-semibold">E-Wallet</span>
-                    <WalletIcon className="w-6 h-6 ml-auto text-gray-500" />
-                  </label>
+
+                  {/* Virtual Account Options - Only show when Virtual Account is selected */}
+                  {selectedPaymentMethod === "virtual_account" && (
+                    <div className="ml-8 space-y-3">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                        Payment Methods
+                      </h3>
+
+                      {/* BCA Virtual Account */}
+                      <label className="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-gray-300 transition-colors">
+                        <input
+                          type="radio"
+                          name="virtualAccount"
+                          value="bca"
+                          checked={selectedVirtualAccount === "bca"}
+                          onChange={() => setSelectedVirtualAccount("bca")}
+                          className="form-radio text-[#584DFF] mr-3"
+                        />
+                        <span className="font-medium text-gray-900">
+                          BCA Virtual Account
+                        </span>
+                      </label>
+
+                      {/* Mandiri Virtual Account */}
+                      <label className="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-gray-300 transition-colors">
+                        <input
+                          type="radio"
+                          name="virtualAccount"
+                          value="mandiri"
+                          checked={selectedVirtualAccount === "mandiri"}
+                          onChange={() => setSelectedVirtualAccount("mandiri")}
+                          className="form-radio text-[#584DFF] mr-3"
+                        />
+                        <div className="flex items-center">
+                          <img
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSIjRkZEQjAwIi8+CjxwYXRoIGQ9Ik0xMiA2TDEzLjA5IDEwLjI2TDE2IDExTDEzLjA5IDEzLjc0TDEyIDE4TDEwLjkxIDEzLjc0TDggMTFMMTAuOTEgMTAuMjZMMTIgNloiIGZpbGw9IiNGRjk4MDAiLz4KPC9zdmc+"
+                            alt="Mandiri"
+                            className="w-6 h-6 mr-3"
+                          />
+                          <span className="font-medium text-gray-900">
+                            Mandiri Virtual Account
+                          </span>
+                        </div>
+                      </label>
+
+                      {/* BNI Virtual Account */}
+                      <label className="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-gray-300 transition-colors">
+                        <input
+                          type="radio"
+                          name="virtualAccount"
+                          value="bni"
+                          checked={selectedVirtualAccount === "bni"}
+                          onChange={() => setSelectedVirtualAccount("bni")}
+                          className="form-radio text-[#584DFF] mr-3"
+                        />
+                        <div className="flex items-center">
+                          <div className="w-12 h-6 bg-orange-500 rounded text-white text-xs font-bold flex items-center justify-center mr-3">
+                            BNI
+                          </div>
+                          <span className="font-medium text-gray-900">
+                            BNI Virtual Account
+                          </span>
+                        </div>
+                      </label>
+                    </div>
+                  )}
                 </div>
               </div>
+
               <button
                 type="submit"
-                className="w-full mt-6 bg-[#584DFF] text-white font-bold py-3.5 px-5 rounded-lg hover:bg-opacity-90 transition-all duration-200 text-lg"
+                className="w-full bg-[#584DFF] text-white font-bold py-3.5 px-5 rounded-lg hover:bg-opacity-90 transition-all duration-200 text-lg"
               >
                 Pay Now ({formatRupiah(total)})
               </button>
